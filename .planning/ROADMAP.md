@@ -43,7 +43,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. User can create, edit, and deactivate services — each with duration, price, category, and deposit rule
   3. User can create a client, add notes (general, colour formula, treatment), tag them, and find them in under 3 seconds by partial name or phone
   4. Client notes and tags are visible when viewing a client record
-**Plans**: TBD
+**Plans**: 5 plans
+- [ ] 02-01-PLAN.md — Shared UI components, types, utilities + onboarding wizard (Wave 1)
+- [ ] 02-02-PLAN.md — Services catalogue with categories, swipe gestures, deposit config (Wave 2)
+- [ ] 02-03-PLAN.md — Client list with search, A-Z headers, add-client sheet (Wave 2)
+- [ ] 02-04-PLAN.md — Client detail page with tabs, notes timeline, colour formulas, tags (Wave 3)
+- [ ] 02-05-PLAN.md — Human verification checkpoint for complete Phase 2 (Wave 4)
 
 ### Phase 3: Booking
 **Goal**: A stylist can book any client for any service on any day from the diary
@@ -85,7 +90,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete | 2026-03-01 |
-| 2. Setup | 0/? | Not started | - |
+| 2. Setup | 0/5 | In progress | - |
 | 3. Booking | 0/? | Not started | - |
 | 4. Payments | 0/? | Not started | - |
 | 5. Polish | 0/? | Not started | - |
