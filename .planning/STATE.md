@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 ## Current Position
 
 Phase: 2 of 5 (Setup)
-Plan: 3 of 5 in current phase
+Plan: 3 of 5 in current phase (02-02 and 02-03 both complete)
 Status: In progress
-Last activity: 2026-03-01 — Plan 02-03 completed
+Last activity: 2026-03-01 — Plan 02-02 completed (retroactive)
 
-Progress: [████░░░░░░] 36%
+Progress: [████░░░░░░] 40%
 
 ## Performance Metrics
 
@@ -28,10 +28,10 @@ Progress: [████░░░░░░] 36%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation | 3 | ~52 min | ~17 min |
-| 02-setup | 2 | ~27 min | ~14 min |
+| 02-setup | 3 | ~32 min | ~11 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (4 min), 01-02 (3 min), 01-03 (~45 min with checkpoint wait), 02-01 (23 min), 02-03 (4 min)
+- Last 5 plans: 01-02 (3 min), 01-03 (~45 min with checkpoint wait), 02-01 (23 min), 02-03 (4 min), 02-02 (5 min)
 - Trend: Auto tasks fast; human-verify checkpoints dominate wall-clock time
 
 *Updated after each plan completion*
@@ -68,5 +68,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-01
-Stopped at: Completed 02-03-PLAN.md (Client list page)
+Stopped at: Completed 02-02-PLAN.md (Services catalogue)
 Resume file: .planning/phases/02-setup/02-04-PLAN.md

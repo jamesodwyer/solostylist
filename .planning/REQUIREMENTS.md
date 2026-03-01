@@ -17,10 +17,10 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Services
 
-- [ ] **SERV-01**: User can create services with name, duration, and price
-- [ ] **SERV-02**: User can assign optional categories to services
-- [ ] **SERV-03**: User can toggle services active/inactive without deleting
-- [ ] **SERV-04**: User can set per-service deposit rules (fixed £ or %, optional/required)
+- [x] **SERV-01**: User can create services with name, duration, and price
+- [x] **SERV-02**: User can assign optional categories to services
+- [x] **SERV-03**: User can toggle services active/inactive without deleting
+- [x] **SERV-04**: User can set per-service deposit rules (fixed £ or %, optional/required)
 
 ### Booking & Diary
 
@@ -118,10 +118,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-03 | Phase 2 | Complete (02-01) |
 | AUTH-04 | Phase 2 | Complete (02-01) |
 | AUTH-05 | Phase 1 | Pending |
-| SERV-01 | Phase 2 | Pending |
-| SERV-02 | Phase 2 | Pending |
-| SERV-03 | Phase 2 | Pending |
-| SERV-04 | Phase 2 | Pending |
+| SERV-01 | Phase 2 | Complete (02-02) |
+| SERV-02 | Phase 2 | Complete (02-02) |
+| SERV-03 | Phase 2 | Complete (02-02) |
+| SERV-04 | Phase 2 | Complete (02-02) |
 | BOOK-01 | Phase 3 | Pending |
 | BOOK-02 | Phase 3 | Pending |
 | BOOK-03 | Phase 3 | Pending |
