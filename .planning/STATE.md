@@ -10,27 +10,28 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 ## Current Position
 
 Phase: 2 of 5 (Setup)
-Plan: 0 of ? in current phase
-Status: Ready to plan
-Last activity: 2026-03-01 — Plan 01-03 completed
+Plan: 1 of 5 in current phase
+Status: In progress
+Last activity: 2026-03-01 — Plan 02-01 completed
 
-Progress: [███░░░░░░░] 20%
+Progress: [████░░░░░░] 28%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
-- Average duration: ~18 min (includes human-verify checkpoints)
-- Total execution time: ~52 min
+- Total plans completed: 4
+- Average duration: ~20 min (includes human-verify checkpoints)
+- Total execution time: ~75 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation | 3 | ~52 min | ~17 min |
+| 02-setup | 1 | ~23 min | ~23 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (4 min), 01-02 (3 min), 01-03 (~45 min with checkpoint wait)
+- Last 5 plans: 01-01 (4 min), 01-02 (3 min), 01-03 (~45 min with checkpoint wait), 02-01 (23 min)
 - Trend: Auto tasks fast; human-verify checkpoints dominate wall-clock time
 
 *Updated after each plan completion*
@@ -49,6 +50,8 @@ Recent decisions affecting current work:
 - PostgreSQL exclusion constraint (btree_gist) for double-booking prevention — must be in Phase 1 migration before booking is built
 - Next.js 16 uses proxy.ts with export function proxy() — middleware.ts is deprecated (rename required for builds without warnings)
 - PWA manifest route (/manifest.webmanifest) must be excluded from auth proxy matcher — without exclusion the manifest returns 302 to /login, breaking PWA installability
+- Onboarding completion check lives in Server Component (not client) — prevents flash of wizard for already-completed users, no JS guard needed
+- completeOnboarding and updateProfile are separate Server Action exports — completeOnboarding seeds preset tags and sets onboarding_completed=true; updateProfile is a clean reusable helper for Settings without those side effects
 
 ### Pending Todos
 
@@ -63,5 +66,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-01
-Stopped at: Completed 01-03-PLAN.md (App shell + PWA — Phase 1 complete)
-Resume file: .planning/phases/02-setup/ (Phase 2 not yet planned)
+Stopped at: Completed 02-01-PLAN.md (Shared UI + onboarding wizard)
+Resume file: .planning/phases/02-setup/02-02-PLAN.md
