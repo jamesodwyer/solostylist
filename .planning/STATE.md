@@ -5,13 +5,13 @@
 See: .planning/PROJECT.md (updated 2026-03-01)
 
 **Core value:** A solo stylist can book a client, check them out, and see their daily takings — all from their phone in under a minute per transaction.
-**Current focus:** Phase 1 — Foundation
+**Current focus:** Phase 2 — Setup
 
 ## Current Position
 
-Phase: 1 of 5 (Foundation)
-Plan: 3 of 3 in current phase — Phase 1 COMPLETE
-Status: Phase 1 complete, ready for Phase 2
+Phase: 2 of 5 (Setup)
+Plan: 0 of ? in current phase
+Status: Ready to plan
 Last activity: 2026-03-01 — Plan 01-03 completed
 
 Progress: [███░░░░░░░] 20%
