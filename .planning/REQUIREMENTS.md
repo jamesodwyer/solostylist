@@ -1,0 +1,157 @@
+# Requirements: Solo Stylist OS
+
+**Defined:** 2026-03-01
+**Core Value:** A solo stylist can book a client, check them out, and see their daily takings — all from their phone in under a minute per transaction.
+
+## v1 Requirements
+
+Requirements for initial release. Each maps to roadmap phases.
+
+### Authentication & Setup
+
+- [ ] **AUTH-01**: User can sign in securely via email OTP or magic link (no passwords)
+- [ ] **AUTH-02**: User can set up business profile (trading name, phone, optional address)
+- [ ] **AUTH-03**: User can configure working hours per weekday
+- [ ] **AUTH-04**: User can set default appointment slot size (15-min default)
+- [ ] **AUTH-05**: App supports PWA add-to-home-screen on mobile
+
+### Services
+
+- [ ] **SERV-01**: User can create services with name, duration, and price
+- [ ] **SERV-02**: User can assign optional categories to services
+- [ ] **SERV-03**: User can toggle services active/inactive without deleting
+- [ ] **SERV-04**: User can set per-service deposit rules (fixed £ or %, optional/required)
+
+### Booking & Diary
+
+- [ ] **BOOK-01**: User can view today's diary with slot-based schedule
+- [ ] **BOOK-02**: User can navigate to other days via date picker
+- [ ] **BOOK-03**: User can create appointments by selecting client and one or more services
+- [ ] **BOOK-04**: User can add notes to appointments
+- [ ] **BOOK-05**: User can update appointment status (booked, completed, cancelled, no-show)
+- [ ] **BOOK-06**: User can move or reschedule appointments
+- [ ] **BOOK-07**: System prevents double-booking (PostgreSQL exclusion constraint)
+- [ ] **BOOK-08**: Appointments respect working hours with manual override option
+
+### Payments
+
+- [ ] **PAY-01**: User can record a cash payment against a client/appointment
+- [ ] **PAY-02**: User can record a card payment against a client/appointment (log only)
+- [ ] **PAY-03**: Payment records store method, amount, timestamp
+- [ ] **PAY-04**: User can record refund/void as adjustment transaction (audit trail)
+
+### Clients & CRM
+
+- [ ] **CLNT-01**: User can create clients with name (required), phone, email, address
+- [ ] **CLNT-02**: User can set marketing consent flag per client
+- [ ] **CLNT-03**: User can search clients by name or phone (partial matching)
+- [ ] **CLNT-04**: User can view client timeline (past appointments, payments)
+- [ ] **CLNT-05**: User can add general notes to clients (free text)
+- [ ] **CLNT-06**: User can store colour formulas and treatment notes per client
+- [ ] **CLNT-07**: User can tag clients (allergy, preferences, custom tags)
+- [ ] **CLNT-08**: Notes are visible during booking and appointment view
+
+### Data & Security
+
+- [ ] **DATA-01**: All tables use RLS enforcing owner_user_id = auth.uid()
+- [ ] **DATA-02**: User can export clients, appointments, payments, and notes as CSV
+- [ ] **DATA-03**: Audit log tracks sensitive actions (adjustments, refunds, deletions)
+- [ ] **DATA-04**: No unauthenticated access to business data
+
+## v2 Requirements
+
+Deferred to future release. Tracked but not in current roadmap.
+
+### Invoicing & Billing
+
+- **INV-01**: User can generate invoice from appointment (one-tap)
+- **INV-02**: User can create standalone invoices (walk-in / misc)
+- **INV-03**: Invoice items include service snapshots and ad-hoc custom items
+- **INV-04**: User can apply bill-level discounts (fixed £ or %)
+- **INV-05**: User can apply line-level discounts (fixed £ or %)
+- **INV-06**: Paid invoices cannot be edited directly (immutability)
+
+### Financial Tracking
+
+- **FIN-01**: User can view daily revenue totals (cash, card, discounts)
+- **FIN-02**: User can perform end-of-day cash up (float, petty cash, variance)
+- **FIN-03**: User can track petty cash withdrawals
+- **FIN-04**: Daily report can be filtered by date
+
+### Notifications & Reminders
+
+- **NOTF-01**: User receives appointment confirmation emails
+- **NOTF-02**: User can send appointment reminder to client
+
+### Stripe Integration
+
+- **STRP-01**: User can generate Stripe payment link for card payments
+- **STRP-02**: System captures payment reference and marks as paid
+
+### Public Booking
+
+- **PUB-01**: Clients can self-book via public booking page
+- **PUB-02**: Deposits collected via Stripe at booking time
+
+## Out of Scope
+
+| Feature | Reason |
+|---------|--------|
+| Multi-staff scheduling | Solo-first MVP — no team management |
+| Complex inventory management | Not core to solo beauty workflow |
+| Marketplace/stylist discovery | No platform-owned client acquisition |
+| AR previews, advanced AI | Future features, not MVP |
+| Deep marketing automation | Beyond simple reminders, defer to v1.5+ |
+| SMS reminders | Cost + UK compliance concerns |
+| VAT handling | Defer unless users demand it |
+| Tap-to-pay / card readers | MVP uses payment logs only |
+| Memberships / subscriptions (client-facing) | Too complex for MVP |
+
+## Traceability
+
+Which phases cover which requirements. Updated during roadmap creation.
+
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| AUTH-01 | — | Pending |
+| AUTH-02 | — | Pending |
+| AUTH-03 | — | Pending |
+| AUTH-04 | — | Pending |
+| AUTH-05 | — | Pending |
+| SERV-01 | — | Pending |
+| SERV-02 | — | Pending |
+| SERV-03 | — | Pending |
+| SERV-04 | — | Pending |
+| BOOK-01 | — | Pending |
+| BOOK-02 | — | Pending |
+| BOOK-03 | — | Pending |
+| BOOK-04 | — | Pending |
+| BOOK-05 | — | Pending |
+| BOOK-06 | — | Pending |
+| BOOK-07 | — | Pending |
+| BOOK-08 | — | Pending |
+| PAY-01 | — | Pending |
+| PAY-02 | — | Pending |
+| PAY-03 | — | Pending |
+| PAY-04 | — | Pending |
+| CLNT-01 | — | Pending |
+| CLNT-02 | — | Pending |
+| CLNT-03 | — | Pending |
+| CLNT-04 | — | Pending |
+| CLNT-05 | — | Pending |
+| CLNT-06 | — | Pending |
+| CLNT-07 | — | Pending |
+| CLNT-08 | — | Pending |
+| DATA-01 | — | Pending |
+| DATA-02 | — | Pending |
+| DATA-03 | — | Pending |
+| DATA-04 | — | Pending |
+
+**Coverage:**
+- v1 requirements: 33 total
+- Mapped to phases: 0
+- Unmapped: 33
+
+---
+*Requirements defined: 2026-03-01*
+*Last updated: 2026-03-01 after initial definition*
