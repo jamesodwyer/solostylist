@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 ## Current Position
 
 Phase: 1 of 5 (Foundation)
-Plan: 2 of 3 in current phase
-Status: In progress
-Last activity: 2026-03-01 — Plan 01-02 completed
+Plan: 3 of 3 in current phase — Phase 1 COMPLETE
+Status: Phase 1 complete, ready for Phase 2
+Last activity: 2026-03-01 — Plan 01-03 completed
 
-Progress: [██░░░░░░░░] 13%
+Progress: [███░░░░░░░] 20%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 3.5 min
-- Total execution time: 7 min
+- Total plans completed: 3
+- Average duration: ~18 min (includes human-verify checkpoints)
+- Total execution time: ~52 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation | 2 | 7 min | 3.5 min |
+| 01-foundation | 3 | ~52 min | ~17 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (4 min), 01-02 (3 min)
-- Trend: Consistent velocity
+- Last 5 plans: 01-01 (4 min), 01-02 (3 min), 01-03 (~45 min with checkpoint wait)
+- Trend: Auto tasks fast; human-verify checkpoints dominate wall-clock time
 
 *Updated after each plan completion*
 
@@ -48,6 +48,7 @@ Recent decisions affecting current work:
 - Auth guard uses getUser() not getSession() — getSession() is insecure server-side (unverified cached data)
 - PostgreSQL exclusion constraint (btree_gist) for double-booking prevention — must be in Phase 1 migration before booking is built
 - Next.js 16 uses proxy.ts with export function proxy() — middleware.ts is deprecated (rename required for builds without warnings)
+- PWA manifest route (/manifest.webmanifest) must be excluded from auth proxy matcher — without exclusion the manifest returns 302 to /login, breaking PWA installability
 
 ### Pending Todos
 
@@ -62,5 +63,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-01
-Stopped at: Completed 01-02-PLAN.md (Magic link auth flow + auth guard)
-Resume file: .planning/phases/01-foundation/01-03-PLAN.md
+Stopped at: Completed 01-03-PLAN.md (App shell + PWA — Phase 1 complete)
+Resume file: .planning/phases/02-setup/ (Phase 2 not yet planned)

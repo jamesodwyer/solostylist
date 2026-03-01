@@ -12,7 +12,7 @@ Five phases following the feature dependency graph: a secure foundation must exi
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Supabase schema, RLS, app shell, and magic-link auth
+- [x] **Phase 1: Foundation** - Supabase schema, RLS, app shell, and magic-link auth
 - [ ] **Phase 2: Setup** - Business profile, services catalogue, and client CRM
 - [ ] **Phase 3: Booking** - Day diary, appointment creation, and scheduling rules
 - [ ] **Phase 4: Payments** - Payment logging, refunds, and audit trail
@@ -32,7 +32,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 - [x] 01-01-PLAN.md — Project bootstrap + database schema (all 12 tables, RLS, btree_gist)
 - [x] 01-02-PLAN.md — Authentication flow (Supabase SSR, magic link, middleware protection)
-- [ ] 01-03-PLAN.md — App shell + PWA (bottom nav, placeholder pages, manifest, install banner)
+- [x] 01-03-PLAN.md — App shell + PWA (bottom nav, placeholder pages, manifest, install banner)
 
 ### Phase 2: Setup
 **Goal**: A stylist has set up their business and entered enough data to book an appointment
@@ -84,7 +84,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 2/3 | In progress | - |
+| 1. Foundation | 3/3 | Complete | 2026-03-01 |
 | 2. Setup | 0/? | Not started | - |
 | 3. Booking | 0/? | Not started | - |
 | 4. Payments | 0/? | Not started | - |
