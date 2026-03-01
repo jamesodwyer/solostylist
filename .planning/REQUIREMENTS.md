@@ -9,7 +9,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Authentication & Setup
 
-- [ ] **AUTH-01**: User can sign in securely via email OTP or magic link (no passwords)
+- [x] **AUTH-01**: User can sign in securely via email OTP or magic link (no passwords)
 - [ ] **AUTH-02**: User can set up business profile (trading name, phone, optional address)
 - [ ] **AUTH-03**: User can configure working hours per weekday
 - [ ] **AUTH-04**: User can set default appointment slot size (15-min default)
@@ -56,7 +56,7 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **DATA-01**: All tables use RLS enforcing owner_user_id = auth.uid()
 - [ ] **DATA-02**: User can export clients, appointments, payments, and notes as CSV
 - [ ] **DATA-03**: Audit log tracks sensitive actions (adjustments, refunds, deletions)
-- [ ] **DATA-04**: No unauthenticated access to business data
+- [x] **DATA-04**: No unauthenticated access to business data
 
 ## v2 Requirements
 
@@ -113,7 +113,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | Phase 1 | Pending |
+| AUTH-01 | Phase 1 | Complete |
 | AUTH-02 | Phase 2 | Pending |
 | AUTH-03 | Phase 2 | Pending |
 | AUTH-04 | Phase 2 | Pending |
@@ -145,7 +145,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DATA-01 | Phase 1 | Complete |
 | DATA-02 | Phase 5 | Pending |
 | DATA-03 | Phase 5 | Pending |
-| DATA-04 | Phase 1 | Pending |
+| DATA-04 | Phase 1 | Complete |
 
 **Coverage:**
 - v1 requirements: 33 total

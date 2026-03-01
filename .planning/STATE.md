@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 ## Current Position
 
 Phase: 1 of 5 (Foundation)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: In progress
-Last activity: 2026-03-01 — Plan 01-01 completed
+Last activity: 2026-03-01 — Plan 01-02 completed
 
-Progress: [█░░░░░░░░░] 7%
+Progress: [██░░░░░░░░] 13%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 4 min
-- Total execution time: 4 min
+- Total plans completed: 2
+- Average duration: 3.5 min
+- Total execution time: 7 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation | 1 | 4 min | 4 min |
+| 01-foundation | 2 | 7 min | 3.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (4 min)
-- Trend: Starting baseline
+- Last 5 plans: 01-01 (4 min), 01-02 (3 min)
+- Trend: Consistent velocity
 
 *Updated after each plan completion*
 
@@ -45,8 +45,9 @@ Recent decisions affecting current work:
 - All monetary values as integer pennies (never floats)
 - Use zod@^3 not v4 (hookform/resolvers TypeScript incompatibility active as of 2026-03)
 - TIMESTAMPTZ for all appointment timestamps; named timezone Europe/London
-- Middleware must call getUser() not getSession() for session refresh
+- Auth guard uses getUser() not getSession() — getSession() is insecure server-side (unverified cached data)
 - PostgreSQL exclusion constraint (btree_gist) for double-booking prevention — must be in Phase 1 migration before booking is built
+- Next.js 16 uses proxy.ts with export function proxy() — middleware.ts is deprecated (rename required for builds without warnings)
 
 ### Pending Todos
 
@@ -61,5 +62,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-01
-Stopped at: Completed 01-01-PLAN.md (Next.js scaffold + DB schema)
-Resume file: .planning/phases/01-foundation/01-02-PLAN.md
+Stopped at: Completed 01-02-PLAN.md (Magic link auth flow + auth guard)
+Resume file: .planning/phases/01-foundation/01-03-PLAN.md
