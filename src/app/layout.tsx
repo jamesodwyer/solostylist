@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
 
@@ -10,6 +10,22 @@ const nunito = Nunito({
 export const metadata: Metadata = {
   title: "SoloStylist",
   description: "Your beauty business, in your pocket",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "SoloStylist",
+  },
+  formatDetection: {
+    telephone: false,
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  viewportFit: "cover",
+  themeColor: "#000000",
 };
 
 export default function RootLayout({

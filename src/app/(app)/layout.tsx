@@ -1,4 +1,5 @@
 import { BottomNav } from '@/components/bottom-nav'
+import { InstallBanner } from '@/components/install-banner'
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -7,6 +8,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
       <BottomNav />
+      <InstallBanner />
     </div>
   )
 }
