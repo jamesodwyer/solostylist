@@ -26,10 +26,10 @@ The app exists, is secure by default, and a user can sign in on their phone. Del
 - Back button (top-left arrow) on sub-pages/detail views; bottom tabs remain visible at all times
 
 ### Visual Identity
-- Warm & approachable aesthetic — soft pinks, warm neutrals, rose gold accents
+- Black and white theme — monochrome palette, no accent colors for now
 - Light mode only for MVP (no dark mode)
 - Rounded & friendly typography — Nunito, Poppins, or DM Sans family
-- Rounded corners, soft shadows throughout
+- Clean and high-contrast
 
 ### PWA Install Prompt
 - Trigger: after first successful sign-in
@@ -38,7 +38,6 @@ The app exists, is secure by default, and a user can sign in on their phone. Del
 - iOS Safari: detect and show manual step-by-step instructions ("Tap Share -> Add to Home Screen")
 
 ### Claude's Discretion
-- Exact color palette values (within warm & approachable direction)
 - Specific font choice from the rounded/friendly family
 - Loading states, skeleton screens, and error state designs
 - Exact spacing and typography scale
@@ -50,7 +49,7 @@ The app exists, is secure by default, and a user can sign in on their phone. Del
 <specifics>
 ## Specific Ideas
 
-- Login should feel like a beauty brand, not a corporate tool — personality-forward with warm, inviting copy
+- Login should still feel branded and personality-forward with friendly copy, even with a monochrome palette
 - The "check your email" screen should feel like a deliberate step, not a dead end — give users confidence the link is coming
 - Navigation should be simple enough that a stylist with wet hands can tap the right tab without thinking
 - The PRD suggests "Today, Book, Clients, Money, Settings" but user prefers merging Today + Book into "Diary" — 4 tabs feels cleaner and booking happens from the diary anyway
