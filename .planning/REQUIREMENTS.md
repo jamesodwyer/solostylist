@@ -53,7 +53,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Data & Security
 
-- [ ] **DATA-01**: All tables use RLS enforcing owner_user_id = auth.uid()
+- [x] **DATA-01**: All tables use RLS enforcing owner_user_id = auth.uid()
 - [ ] **DATA-02**: User can export clients, appointments, payments, and notes as CSV
 - [ ] **DATA-03**: Audit log tracks sensitive actions (adjustments, refunds, deletions)
 - [ ] **DATA-04**: No unauthenticated access to business data
@@ -142,7 +142,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CLNT-06 | Phase 2 | Pending |
 | CLNT-07 | Phase 2 | Pending |
 | CLNT-08 | Phase 2 | Pending |
-| DATA-01 | Phase 1 | Pending |
+| DATA-01 | Phase 1 | Complete |
 | DATA-02 | Phase 5 | Pending |
 | DATA-03 | Phase 5 | Pending |
 | DATA-04 | Phase 1 | Pending |

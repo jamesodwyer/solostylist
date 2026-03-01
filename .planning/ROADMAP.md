@@ -30,7 +30,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. All 12 database tables exist with RLS policies — no row is accessible unless owner_user_id matches the authenticated user
   4. An unauthenticated request to any protected route redirects to the login page
 **Plans**: 3 plans
-- [ ] 01-01-PLAN.md — Project bootstrap + database schema (all 12 tables, RLS, btree_gist)
+- [x] 01-01-PLAN.md — Project bootstrap + database schema (all 12 tables, RLS, btree_gist)
 - [ ] 01-02-PLAN.md — Authentication flow (Supabase SSR, magic link, middleware protection)
 - [ ] 01-03-PLAN.md — App shell + PWA (bottom nav, placeholder pages, manifest, install banner)
 
@@ -84,7 +84,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/3 | Planned | - |
+| 1. Foundation | 1/3 | In progress | - |
 | 2. Setup | 0/? | Not started | - |
 | 3. Booking | 0/? | Not started | - |
 | 4. Payments | 0/? | Not started | - |
