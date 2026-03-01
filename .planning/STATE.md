@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 ## Current Position
 
 Phase: 2 of 5 (Setup)
-Plan: 3 of 5 in current phase (02-02 and 02-03 both complete)
+Plan: 4 of 5 in current phase (02-02, 02-03, 02-04 complete)
 Status: In progress
-Last activity: 2026-03-01 — Plan 02-02 completed (retroactive)
+Last activity: 2026-03-01 — Plan 02-04 completed (client detail page)
 
-Progress: [████░░░░░░] 40%
+Progress: [█████░░░░░] 48%
 
 ## Performance Metrics
 
@@ -28,10 +28,10 @@ Progress: [████░░░░░░] 40%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation | 3 | ~52 min | ~17 min |
-| 02-setup | 3 | ~32 min | ~11 min |
+| 02-setup | 4 | ~35 min | ~9 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-02 (3 min), 01-03 (~45 min with checkpoint wait), 02-01 (23 min), 02-03 (4 min), 02-02 (5 min)
+- Last 5 plans: 01-03 (~45 min with checkpoint wait), 02-01 (23 min), 02-03 (4 min), 02-02 (5 min), 02-04 (3 min)
 - Trend: Auto tasks fast; human-verify checkpoints dominate wall-clock time
 
 *Updated after each plan completion*
@@ -54,6 +54,9 @@ Recent decisions affecting current work:
 - completeOnboarding and updateProfile are separate Server Action exports — completeOnboarding seeds preset tags and sets onboarding_completed=true; updateProfile is a clean reusable helper for Settings without those side effects
 - Client search uses browser Supabase client with RLS — no explicit owner_user_id filter needed (auth.uid() enforced by RLS)
 - zodResolver as any cast required for zod@3 + @hookform/resolvers TS incompatibility — apply to all useForm calls with zodResolver
+- Colour formulas stored in separate table but merged into notes timeline; dedicated view on Colour tab for formula lookup
+- createTag uses upsert (onConflict: 'owner_user_id,name') — returns existing row if name already exists, no error thrown
+- addTagToClient handles Postgres unique constraint error (23505) as idempotent success
 
 ### Pending Todos
 
@@ -68,5 +71,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-01
-Stopped at: Completed 02-02-PLAN.md (Services catalogue)
-Resume file: .planning/phases/02-setup/02-04-PLAN.md
+Stopped at: Completed 02-04-PLAN.md (Client detail page)
+Resume file: .planning/phases/02-setup/02-05-PLAN.md

@@ -47,7 +47,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] 02-01-PLAN.md — Shared UI components, types, utilities + onboarding wizard (Wave 1)
 - [x] 02-02-PLAN.md — Services catalogue with categories, swipe gestures, deposit config (Wave 2)
 - [x] 02-03-PLAN.md — Client list with search, A-Z headers, add-client sheet (Wave 2)
-- [ ] 02-04-PLAN.md — Client detail page with tabs, notes timeline, colour formulas, tags (Wave 3)
+- [x] 02-04-PLAN.md — Client detail page with tabs, notes timeline, colour formulas, tags (Wave 3)
 - [ ] 02-05-PLAN.md — Human verification checkpoint for complete Phase 2 (Wave 4)
 
 ### Phase 3: Booking
@@ -90,7 +90,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete | 2026-03-01 |
-| 2. Setup | 3/5 | In progress | - |
+| 2. Setup | 4/5 | In progress | - |
 | 3. Booking | 0/? | Not started | - |
 | 4. Payments | 0/? | Not started | - |
 | 5. Polish | 0/? | Not started | - |

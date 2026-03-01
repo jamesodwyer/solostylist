@@ -45,11 +45,11 @@ Requirements for initial release. Each maps to roadmap phases.
 - [x] **CLNT-01**: User can create clients with name (required), phone, email, address
 - [x] **CLNT-02**: User can set marketing consent flag per client
 - [x] **CLNT-03**: User can search clients by name or phone (partial matching)
-- [ ] **CLNT-04**: User can view client timeline (past appointments, payments)
-- [ ] **CLNT-05**: User can add general notes to clients (free text)
-- [ ] **CLNT-06**: User can store colour formulas and treatment notes per client
-- [ ] **CLNT-07**: User can tag clients (allergy, preferences, custom tags)
-- [ ] **CLNT-08**: Notes are visible during booking and appointment view
+- [x] **CLNT-04**: User can view client timeline (past appointments, payments)
+- [x] **CLNT-05**: User can add general notes to clients (free text)
+- [x] **CLNT-06**: User can store colour formulas and treatment notes per client
+- [x] **CLNT-07**: User can tag clients (allergy, preferences, custom tags)
+- [x] **CLNT-08**: Notes are visible during booking and appointment view
 
 ### Data & Security
 
@@ -137,11 +137,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CLNT-01 | Phase 2 | Complete (02-03) |
 | CLNT-02 | Phase 2 | Complete (02-03) |
 | CLNT-03 | Phase 2 | Complete (02-03) |
-| CLNT-04 | Phase 2 | Pending |
-| CLNT-05 | Phase 2 | Pending |
-| CLNT-06 | Phase 2 | Pending |
-| CLNT-07 | Phase 2 | Pending |
-| CLNT-08 | Phase 2 | Pending |
+| CLNT-04 | Phase 2 | Complete (02-04) |
+| CLNT-05 | Phase 2 | Complete (02-04) |
+| CLNT-06 | Phase 2 | Complete (02-04) |
+| CLNT-07 | Phase 2 | Complete (02-04) |
+| CLNT-08 | Phase 2 | Complete (02-04) |
 | DATA-01 | Phase 1 | Complete |
 | DATA-02 | Phase 5 | Pending |
 | DATA-03 | Phase 5 | Pending |
@@ -154,4 +154,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-03-01*
-*Last updated: 2026-03-01 after roadmap creation*
+*Last updated: 2026-03-01 after 02-04 completion (CLNT-04 through CLNT-08 complete)*
