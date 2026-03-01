@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 ## Current Position
 
 Phase: 2 of 5 (Setup)
-Plan: 1 of 5 in current phase
+Plan: 3 of 5 in current phase
 Status: In progress
-Last activity: 2026-03-01 — Plan 02-01 completed
+Last activity: 2026-03-01 — Plan 02-03 completed
 
-Progress: [████░░░░░░] 28%
+Progress: [████░░░░░░] 36%
 
 ## Performance Metrics
 
@@ -28,10 +28,10 @@ Progress: [████░░░░░░] 28%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation | 3 | ~52 min | ~17 min |
-| 02-setup | 1 | ~23 min | ~23 min |
+| 02-setup | 2 | ~27 min | ~14 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (4 min), 01-02 (3 min), 01-03 (~45 min with checkpoint wait), 02-01 (23 min)
+- Last 5 plans: 01-01 (4 min), 01-02 (3 min), 01-03 (~45 min with checkpoint wait), 02-01 (23 min), 02-03 (4 min)
 - Trend: Auto tasks fast; human-verify checkpoints dominate wall-clock time
 
 *Updated after each plan completion*
@@ -52,6 +52,8 @@ Recent decisions affecting current work:
 - PWA manifest route (/manifest.webmanifest) must be excluded from auth proxy matcher — without exclusion the manifest returns 302 to /login, breaking PWA installability
 - Onboarding completion check lives in Server Component (not client) — prevents flash of wizard for already-completed users, no JS guard needed
 - completeOnboarding and updateProfile are separate Server Action exports — completeOnboarding seeds preset tags and sets onboarding_completed=true; updateProfile is a clean reusable helper for Settings without those side effects
+- Client search uses browser Supabase client with RLS — no explicit owner_user_id filter needed (auth.uid() enforced by RLS)
+- zodResolver as any cast required for zod@3 + @hookform/resolvers TS incompatibility — apply to all useForm calls with zodResolver
 
 ### Pending Todos
 
@@ -66,5 +68,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-01
-Stopped at: Completed 02-01-PLAN.md (Shared UI + onboarding wizard)
-Resume file: .planning/phases/02-setup/02-02-PLAN.md
+Stopped at: Completed 02-03-PLAN.md (Client list page)
+Resume file: .planning/phases/02-setup/02-04-PLAN.md

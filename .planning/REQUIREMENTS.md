@@ -42,9 +42,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Clients & CRM
 
-- [ ] **CLNT-01**: User can create clients with name (required), phone, email, address
-- [ ] **CLNT-02**: User can set marketing consent flag per client
-- [ ] **CLNT-03**: User can search clients by name or phone (partial matching)
+- [x] **CLNT-01**: User can create clients with name (required), phone, email, address
+- [x] **CLNT-02**: User can set marketing consent flag per client
+- [x] **CLNT-03**: User can search clients by name or phone (partial matching)
 - [ ] **CLNT-04**: User can view client timeline (past appointments, payments)
 - [ ] **CLNT-05**: User can add general notes to clients (free text)
 - [ ] **CLNT-06**: User can store colour formulas and treatment notes per client
@@ -134,9 +134,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PAY-02 | Phase 4 | Pending |
 | PAY-03 | Phase 4 | Pending |
 | PAY-04 | Phase 4 | Pending |
-| CLNT-01 | Phase 2 | Pending |
-| CLNT-02 | Phase 2 | Pending |
-| CLNT-03 | Phase 2 | Pending |
+| CLNT-01 | Phase 2 | Complete (02-03) |
+| CLNT-02 | Phase 2 | Complete (02-03) |
+| CLNT-03 | Phase 2 | Complete (02-03) |
 | CLNT-04 | Phase 2 | Pending |
 | CLNT-05 | Phase 2 | Pending |
 | CLNT-06 | Phase 2 | Pending |
