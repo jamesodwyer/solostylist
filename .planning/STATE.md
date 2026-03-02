@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-03-02T23:48:38Z"
+last_updated: "2026-03-02T23:58:00Z"
 progress:
   total_phases: 5
   completed_phases: 3
   total_plans: 15
-  completed_plans: 13
+  completed_plans: 14
 ---
 
 # Project State
@@ -23,11 +23,11 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 ## Current Position
 
 Phase: 4 of 5 (Payments)
-Plan: 1 of 3 complete in current phase
+Plan: 2 of 3 complete in current phase
 Status: In progress
-Last activity: 2026-03-02 — Plan 04-01 complete: Payment types, createPayment Server Action, PaymentSheet, Take Payment button in AppointmentSheet
+Last activity: 2026-03-02 — Plan 04-02 complete: createAdjustment Server Action, AdjustmentSheet, PaymentList, Money page with daily totals, client payments tab
 
-Progress: [████████░░] 68%
+Progress: [████████░░] 72%
 
 ## Performance Metrics
 
@@ -82,6 +82,10 @@ Recent decisions affecting current work:
 - PaymentSheet rendered as sibling sheet in DiaryView (not nested inside AppointmentSheet) — avoids sheet-inside-sheet z-index complexity on iOS Safari
 - Audit log insert failure is non-blocking in createPayment — logs console.error but does not fail the user action (payment already committed)
 - hasPayment check uses browser Supabase client query on appointment open — same pattern as notes update; RLS enforces owner scoping
+- PaymentList onRefund prop optional — Money page provides it (Refund button visible), client timeline omits it (read-only view)
+- Money page totals computed server-side in integer pennies — no float arithmetic risk, available for SSR render
+- Void locks amount to full original payment (readOnly input); refund allows partial editing up to original amount
+- AdjustmentSheet resets all state on close to prevent stale values bleeding between sessions
 
 ### Pending Todos
 
@@ -96,5 +100,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 04-01-PLAN.md — Payment types, createPayment Server Action, PaymentSheet, Take Payment button wired into AppointmentSheet and DiaryView
-Resume file: .planning/phases/04-payments/04-02-PLAN.md
+Stopped at: Completed 04-02-PLAN.md — createAdjustment Server Action, AdjustmentSheet, PaymentList, Money page with daily totals, client payments tab
+Resume file: .planning/phases/04-payments/04-03-PLAN.md

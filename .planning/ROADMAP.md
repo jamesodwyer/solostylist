@@ -76,7 +76,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Every payment and adjustment record carries a timestamp and is visible in the client's history
 **Plans**: 3 plans
 - [x] 04-01-PLAN.md — Payment types, createPayment Server Action, PaymentSheet, appointment sheet integration (Wave 1)
-- [ ] 04-02-PLAN.md — Adjustment sheet, Money page with daily totals, client timeline payments (Wave 2)
+- [x] 04-02-PLAN.md — Adjustment sheet, Money page with daily totals, client timeline payments (Wave 2)
 - [ ] 04-03-PLAN.md — Human verification checkpoint for complete Phase 4 (Wave 3)
 
 ### Phase 5: Polish
@@ -99,5 +99,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 1. Foundation | 3/3 | Complete | 2026-03-01 |
 | 2. Setup | 5/5 | Complete | 2026-03-01 |
 | 3. Booking | 3/4 | In progress | - |
-| 4. Payments | 1/3 | In progress | - |
+| 4. Payments | 2/3 | In progress | - |
 | 5. Polish | 0/? | Not started | - |
