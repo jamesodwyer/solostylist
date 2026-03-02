@@ -240,37 +240,29 @@ export function AppointmentSheet({ open, onOpenChange, appointment, date }: Appo
             {/* Status action buttons + reschedule */}
             <div className="px-4 pb-6 pt-3 border-t border-gray-100 bg-white space-y-2">
               {appointment.status === 'booked' && (
-                <>
-                  <div className="flex gap-2">
-                    <button
-                      onClick={() => handleStatusChange('completed')}
-                      disabled={isPending}
-                      className="flex-1 bg-green-600 text-white text-sm font-semibold py-3 rounded-xl min-h-[44px] disabled:opacity-40"
-                    >
-                      Complete
-                    </button>
-                    <button
-                      onClick={() => handleStatusChange('no_show')}
-                      disabled={isPending}
-                      className="flex-1 border border-amber-400 text-amber-700 text-sm font-semibold py-3 rounded-xl min-h-[44px] disabled:opacity-40"
-                    >
-                      No Show
-                    </button>
-                    <button
-                      onClick={() => handleStatusChange('cancelled')}
-                      disabled={isPending}
-                      className="flex-1 border border-red-300 text-red-600 text-sm font-semibold py-3 rounded-xl min-h-[44px] disabled:opacity-40"
-                    >
-                      Cancel
-                    </button>
-                  </div>
+                <div className="flex gap-2">
                   <button
-                    onClick={() => setMode('reschedule')}
-                    className="w-full border border-gray-200 text-gray-700 text-sm font-medium py-3 rounded-xl min-h-[44px] hover:bg-gray-50"
+                    onClick={() => handleStatusChange('completed')}
+                    disabled={isPending}
+                    className="flex-1 bg-green-600 text-white text-sm font-semibold py-3 rounded-xl min-h-[44px] disabled:opacity-40"
                   >
-                    Reschedule
+                    Complete
                   </button>
-                </>
+                  <button
+                    onClick={() => handleStatusChange('no_show')}
+                    disabled={isPending}
+                    className="flex-1 border border-amber-400 text-amber-700 text-sm font-semibold py-3 rounded-xl min-h-[44px] disabled:opacity-40"
+                  >
+                    No Show
+                  </button>
+                  <button
+                    onClick={() => handleStatusChange('cancelled')}
+                    disabled={isPending}
+                    className="flex-1 border border-red-300 text-red-600 text-sm font-semibold py-3 rounded-xl min-h-[44px] disabled:opacity-40"
+                  >
+                    Cancel
+                  </button>
+                </div>
               )}
 
               {(appointment.status === 'completed' || appointment.status === 'cancelled' || appointment.status === 'no_show') && (
@@ -289,6 +281,13 @@ export function AppointmentSheet({ open, onOpenChange, appointment, date }: Appo
                   )}
                 </button>
               )}
+
+              <button
+                onClick={() => setMode('reschedule')}
+                className="w-full border border-gray-200 text-gray-700 text-sm font-medium py-3 rounded-xl min-h-[44px] hover:bg-gray-50"
+              >
+                Reschedule
+              </button>
             </div>
           </>
         )}

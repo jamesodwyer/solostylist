@@ -44,6 +44,7 @@ export function AppointmentBlock({
 
   const statusClasses = getStatusClasses(appointment.status)
   const isCancelled = appointment.status === 'cancelled'
+  const isFreedSlot = appointment.status === 'cancelled' || appointment.status === 'no_show'
 
   return (
     <div
@@ -55,13 +56,31 @@ export function AppointmentBlock({
         right: '8px',
       }}
       onClick={(e) => {
+        if (isFreedSlot) {
+          // Let the tap pass through to the slot for a new booking
+          return
+        }
         e.stopPropagation()
         onClick()
       }}
     >
-      <p className={`text-xs font-medium truncate ${isCancelled ? 'line-through' : ''}`}>
-        {appointment.clients?.first_name}{appointment.clients?.last_name ? ` ${appointment.clients.last_name}` : ''}
-      </p>
+      <div className="flex items-start justify-between">
+        <p className={`text-xs font-medium truncate flex-1 ${isCancelled ? 'line-through' : ''}`}>
+          {appointment.clients?.first_name}{appointment.clients?.last_name ? ` ${appointment.clients.last_name}` : ''}
+        </p>
+        {isFreedSlot && (
+          <button
+            className="ml-1 shrink-0 text-gray-400 hover:text-gray-600 min-w-[28px] min-h-[28px] flex items-center justify-center rounded-md hover:bg-white/60"
+            onClick={(e) => {
+              e.stopPropagation()
+              onClick()
+            }}
+            aria-label="View appointment details"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/><circle cx="5" cy="12" r="1.5"/></svg>
+          </button>
+        )}
+      </div>
       {heightPx >= 50 && appointment.appointment_services?.[0] && (
         <p className="text-xs text-gray-600 truncate">
           {appointment.appointment_services[0].service_name}

@@ -230,7 +230,6 @@ export async function rescheduleAppointment(data: z.infer<typeof rescheduleSchem
     })
     .eq('id', parsed.data.appointment_id)
     .eq('owner_user_id', user.id)
-    .eq('status', 'booked')
 
   if (error) {
     if (error.code === '23P01') {
