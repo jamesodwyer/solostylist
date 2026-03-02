@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-03-02T22:41:16.840Z"
+last_updated: "2026-03-02T23:48:38Z"
 progress:
-  total_phases: 3
+  total_phases: 5
   completed_phases: 3
-  total_plans: 12
-  completed_plans: 12
+  total_plans: 15
+  completed_plans: 13
 ---
 
 # Project State
@@ -22,12 +22,12 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 
 ## Current Position
 
-Phase: 3 of 5 (Booking)
-Plan: 4 of 4 in current phase (03-04 checkpoint — awaiting human verification)
-Status: In progress — human verify checkpoint
-Last activity: 2026-03-02 — Plan 03-04 reached human-verify checkpoint for Phase 3 booking system
+Phase: 4 of 5 (Payments)
+Plan: 1 of 3 complete in current phase
+Status: In progress
+Last activity: 2026-03-02 — Plan 04-01 complete: Payment types, createPayment Server Action, PaymentSheet, Take Payment button in AppointmentSheet
 
-Progress: [████████░░] 65%
+Progress: [████████░░] 68%
 
 ## Performance Metrics
 
@@ -79,6 +79,9 @@ Recent decisions affecting current work:
 - notes field passed as empty string (not undefined) to createAppointment — zod z.string().optional().default('') infers string output type, not string | undefined
 - Notes update in AppointmentSheet uses Supabase browser client direct update (RLS enforced) — no Server Action needed for single nullable field update
 - Multi-step bottom sheet pattern: useState<'client'|'services'|'confirm'> drives conditional rendering within a single SheetContent component
+- PaymentSheet rendered as sibling sheet in DiaryView (not nested inside AppointmentSheet) — avoids sheet-inside-sheet z-index complexity on iOS Safari
+- Audit log insert failure is non-blocking in createPayment — logs console.error but does not fail the user action (payment already committed)
+- hasPayment check uses browser Supabase client query on appointment open — same pattern as notes update; RLS enforces owner scoping
 
 ### Pending Todos
 
@@ -93,5 +96,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Checkpoint: 03-04 human-verify — awaiting Phase 3 booking system verification
-Resume file: .planning/phases/03-booking/03-04-PLAN.md (resume after human approves)
+Stopped at: Completed 04-01-PLAN.md — Payment types, createPayment Server Action, PaymentSheet, Take Payment button wired into AppointmentSheet and DiaryView
+Resume file: .planning/phases/04-payments/04-02-PLAN.md

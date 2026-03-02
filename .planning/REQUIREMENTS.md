@@ -35,9 +35,9 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Payments
 
-- [ ] **PAY-01**: User can record a cash payment against a client/appointment
-- [ ] **PAY-02**: User can record a card payment against a client/appointment (log only)
-- [ ] **PAY-03**: Payment records store method, amount, timestamp
+- [x] **PAY-01**: User can record a cash payment against a client/appointment
+- [x] **PAY-02**: User can record a card payment against a client/appointment (log only)
+- [x] **PAY-03**: Payment records store method, amount, timestamp
 - [ ] **PAY-04**: User can record refund/void as adjustment transaction (audit trail)
 
 ### Clients & CRM
@@ -130,9 +130,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | BOOK-06 | Phase 3 | Pending |
 | BOOK-07 | Phase 3 | Pending |
 | BOOK-08 | Phase 3 | Pending |
-| PAY-01 | Phase 4 | Pending |
-| PAY-02 | Phase 4 | Pending |
-| PAY-03 | Phase 4 | Pending |
+| PAY-01 | Phase 4 | Complete (04-01) |
+| PAY-02 | Phase 4 | Complete (04-01) |
+| PAY-03 | Phase 4 | Complete (04-01) |
 | PAY-04 | Phase 4 | Pending |
 | CLNT-01 | Phase 2 | Complete (02-03) |
 | CLNT-02 | Phase 2 | Complete (02-03) |
