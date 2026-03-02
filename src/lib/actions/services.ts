@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
 import { z } from 'zod'
 
-export const serviceSchema = z.object({
+const serviceSchema = z.object({
   name: z.string().min(1, 'Service name is required'),
   duration_minutes: z.number().int().min(5, 'Duration must be at least 5 minutes'),
   price: z.number().int().min(0, 'Price must be 0 or more'),
@@ -19,7 +19,7 @@ const categorySchema = z.object({
   name: z.string().min(1, 'Category name is required'),
 })
 
-export type ServiceInput = z.infer<typeof serviceSchema>
+type ServiceInput = z.infer<typeof serviceSchema>
 
 export async function createService(data: ServiceInput) {
   const supabase = await createClient()
