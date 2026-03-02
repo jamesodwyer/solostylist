@@ -104,3 +104,34 @@ export interface ClientTag {
   tag_id: string
   created_at: string
 }
+
+// Appointment status union type
+export type AppointmentStatus = 'booked' | 'completed' | 'cancelled' | 'no_show'
+
+// Appointment — maps to public.appointments table
+export interface Appointment {
+  id: string
+  owner_user_id: string
+  client_id: string
+  starts_at: string  // ISO 8601 TIMESTAMPTZ
+  ends_at: string    // ISO 8601 TIMESTAMPTZ
+  status: AppointmentStatus
+  notes: string | null
+  created_at: string
+  updated_at: string
+  // Joined fields (optional, from .select() with joins)
+  clients?: { first_name: string; last_name: string | null }
+  appointment_services?: AppointmentService[]
+}
+
+// AppointmentService — maps to public.appointment_services table (snapshot at booking time)
+export interface AppointmentService {
+  id: string
+  owner_user_id: string
+  appointment_id: string
+  service_id: string
+  service_name: string         // snapshot
+  service_price: number        // integer pennies, snapshot
+  service_duration_minutes: number  // snapshot
+  created_at: string
+}
