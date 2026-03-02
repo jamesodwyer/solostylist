@@ -8,6 +8,7 @@ import { formatDiaryDate } from '@/lib/utils'
 import { DiaryGrid } from './diary-grid'
 import { BookingSheet } from './booking-sheet'
 import { AppointmentSheet } from './appointment-sheet'
+import { PaymentSheet } from '@/components/payments/payment-sheet'
 
 interface DiaryViewProps {
   date: string  // 'YYYY-MM-DD'
@@ -46,6 +47,7 @@ export function DiaryView({ date, profile, appointments }: DiaryViewProps) {
 
   const [selectedSlotTime, setSelectedSlotTime] = useState<string | null>(null)
   const [selectedAppointment, setSelectedAppointment] = useState<Appointment | null>(null)
+  const [paymentTarget, setPaymentTarget] = useState<Appointment | null>(null)
 
   const prevDate = addDays(date, -1)
   const nextDate = addDays(date, 1)
@@ -160,6 +162,25 @@ export function DiaryView({ date, profile, appointments }: DiaryViewProps) {
         onOpenChange={(open) => { if (!open) setSelectedAppointment(null) }}
         appointment={selectedAppointment}
         date={date}
+        onTakePayment={(appt) => {
+          setSelectedAppointment(null)
+          setPaymentTarget(appt)
+        }}
+      />
+
+      {/* Payment sheet — opened when Take Payment is tapped from appointment sheet */}
+      <PaymentSheet
+        open={!!paymentTarget}
+        onOpenChange={(open) => { if (!open) setPaymentTarget(null) }}
+        appointmentId={paymentTarget?.id}
+        clientId={paymentTarget?.client_id ?? ''}
+        clientName={paymentTarget
+          ? `${paymentTarget.clients?.first_name ?? ''} ${paymentTarget.clients?.last_name ?? ''}`.trim()
+          : ''}
+        suggestedAmount={(paymentTarget?.appointment_services ?? []).reduce(
+          (s, svc) => s + svc.service_price,
+          0
+        )}
       />
     </div>
   )

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
-import { Pencil, ChevronLeft, Loader2, AlertTriangle } from 'lucide-react'
+import { Pencil, ChevronLeft, Loader2, AlertTriangle, Banknote } from 'lucide-react'
 import {
   Sheet,
   SheetContent,
@@ -19,6 +19,7 @@ interface AppointmentSheetProps {
   onOpenChange: (open: boolean) => void
   appointment: Appointment | null
   date: string  // current diary date, for reschedule default
+  onTakePayment?: (appointment: Appointment) => void  // called when Take Payment tapped
 }
 
 type Mode = 'view' | 'reschedule' | 'edit-notes'
@@ -37,13 +38,14 @@ const STATUS_BADGE_CLASSES: Record<AppointmentStatus, string> = {
   no_show: 'bg-amber-100 text-amber-700',
 }
 
-export function AppointmentSheet({ open, onOpenChange, appointment, date }: AppointmentSheetProps) {
+export function AppointmentSheet({ open, onOpenChange, appointment, date, onTakePayment }: AppointmentSheetProps) {
   const router = useRouter()
   const [mode, setMode] = useState<Mode>('view')
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | null>(null)
   const [warning, setWarning] = useState<string | null>(null)
   const [overrideHours, setOverrideHours] = useState(false)
+  const [hasPayment, setHasPayment] = useState(false)
 
   // Reschedule state
   const [newDate, setNewDate] = useState('')
@@ -69,6 +71,7 @@ export function AppointmentSheet({ open, onOpenChange, appointment, date }: Appo
       setError(null)
       setWarning(null)
       setOverrideHours(false)
+      setHasPayment(false)
       // Pre-fill reschedule fields with current appointment values
       const startDate = new Date(appointment.starts_at)
       setNewDate(startDate.toISOString().split('T')[0])
@@ -76,6 +79,15 @@ export function AppointmentSheet({ open, onOpenChange, appointment, date }: Appo
         `${startDate.getHours().toString().padStart(2, '0')}:${startDate.getMinutes().toString().padStart(2, '0')}`
       )
       setEditedNotes(appointment.notes ?? '')
+      // Check if payment exists for this appointment
+      const supabase = createClient()
+      supabase
+        .from('payments')
+        .select('id')
+        .eq('appointment_id', appointment.id)
+        .eq('payment_type', 'payment')
+        .limit(1)
+        .then(({ data }) => setHasPayment((data ?? []).length > 0))
     }
   }, [appointment])
 
@@ -239,6 +251,23 @@ export function AppointmentSheet({ open, onOpenChange, appointment, date }: Appo
 
             {/* Status action buttons + reschedule */}
             <div className="px-4 pb-6 pt-3 border-t border-gray-100 bg-white space-y-2">
+              {appointment.status === 'completed' && !hasPayment && (
+                <button
+                  onClick={() => {
+                    onTakePayment?.(appointment)
+                    onOpenChange(false)
+                  }}
+                  className="w-full bg-black text-white text-sm font-semibold py-3 rounded-xl min-h-[44px] flex items-center justify-center gap-2"
+                >
+                  <Banknote className="size-4" />
+                  Take Payment
+                </button>
+              )}
+              {appointment.status === 'completed' && hasPayment && (
+                <div className="flex items-center justify-center gap-2 text-sm text-green-600 font-medium py-2">
+                  <span>Payment recorded</span>
+                </div>
+              )}
               {appointment.status === 'booked' && (
                 <div className="flex gap-2">
                   <button
