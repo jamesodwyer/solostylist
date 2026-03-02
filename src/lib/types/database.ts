@@ -135,3 +135,38 @@ export interface AppointmentService {
   service_duration_minutes: number  // snapshot
   created_at: string
 }
+
+// Payment method union type
+export type PaymentMethod = 'cash' | 'card'
+
+// Payment type union type
+export type PaymentType = 'payment' | 'refund' | 'void'
+
+// Payment -- maps to public.payments table
+export interface Payment {
+  id: string
+  owner_user_id: string
+  appointment_id: string | null
+  client_id: string
+  amount: number  // INTEGER pennies
+  method: PaymentMethod
+  payment_type: PaymentType
+  reference_payment_id: string | null
+  notes: string | null
+  paid_at: string  // ISO 8601 TIMESTAMPTZ
+  created_at: string
+  // Joined fields (optional, from .select() with joins)
+  clients?: { first_name: string; last_name: string | null }
+  appointments?: { starts_at: string }
+}
+
+// AuditLogEntry -- maps to public.audit_log table
+export interface AuditLogEntry {
+  id: string
+  owner_user_id: string
+  action: string
+  entity_type: string
+  entity_id: string
+  details: Record<string, unknown> | null
+  created_at: string
+}
