@@ -74,7 +74,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   1. User can log a cash or card payment against a completed appointment with method, amount, and timestamp recorded
   2. User can record a refund or void against a paid appointment — the original payment remains and an adjustment entry is created
   3. Every payment and adjustment record carries a timestamp and is visible in the client's history
-**Plans**: TBD
+**Plans**: 3 plans
+- [ ] 04-01-PLAN.md — Payment types, createPayment Server Action, PaymentSheet, appointment sheet integration (Wave 1)
+- [ ] 04-02-PLAN.md — Adjustment sheet, Money page with daily totals, client timeline payments (Wave 2)
+- [ ] 04-03-PLAN.md — Human verification checkpoint for complete Phase 4 (Wave 3)
 
 ### Phase 5: Polish
 **Goal**: The app is safe to hand to a real stylist — data is portable, security is audited, and mobile UX is verified
@@ -96,5 +99,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 1. Foundation | 3/3 | Complete | 2026-03-01 |
 | 2. Setup | 5/5 | Complete | 2026-03-01 |
 | 3. Booking | 3/4 | In progress | - |
-| 4. Payments | 0/? | Not started | - |
+| 4. Payments | 0/3 | Not started | - |
 | 5. Polish | 0/? | Not started | - |
