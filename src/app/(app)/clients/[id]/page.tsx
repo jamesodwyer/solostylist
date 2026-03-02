@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { ClientDetailTabs } from '@/components/clients/detail/client-detail-tabs'
+import { Payment } from '@/lib/types/database'
 
 export default async function ClientDetailPage({
   params,
@@ -51,6 +52,17 @@ export default async function ClientDetailPage({
     .eq('owner_user_id', user.id)
     .order('name')
 
+  const { data: clientPayments } = await supabase
+    .from('payments')
+    .select(`
+      id, amount, method, payment_type, reference_payment_id,
+      paid_at, notes,
+      appointments(starts_at)
+    `)
+    .eq('client_id', id)
+    .eq('owner_user_id', user.id)
+    .order('paid_at', { ascending: false })
+
   return (
     <div className="flex flex-col min-h-screen bg-white">
       {/* Header */}
@@ -73,6 +85,7 @@ export default async function ClientDetailPage({
         notes={notes ?? []}
         colourFormulas={colourFormulas ?? []}
         allTags={allTags ?? []}
+        payments={(clientPayments ?? []) as unknown as Payment[]}
       />
     </div>
   )
