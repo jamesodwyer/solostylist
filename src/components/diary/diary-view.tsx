@@ -2,10 +2,12 @@
 
 import { useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Plus } from 'lucide-react'
 import { Appointment, WorkingHours } from '@/lib/types/database'
 import { formatDiaryDate } from '@/lib/utils'
 import { DiaryGrid } from './diary-grid'
+import { BookingSheet } from './booking-sheet'
+import { AppointmentSheet } from './appointment-sheet'
 
 interface DiaryViewProps {
   date: string  // 'YYYY-MM-DD'
@@ -21,6 +23,17 @@ function addDays(dateStr: string, days: number): string {
   const date = new Date(dateStr + 'T12:00:00Z')
   date.setUTCDate(date.getUTCDate() + days)
   return date.toISOString().split('T')[0]
+}
+
+/** Compute the next slot time from now, rounded up to the nearest slotMinutes boundary */
+function nextSlotTime(slotMinutes: number): string {
+  const now = new Date()
+  const totalMinutes = now.getHours() * 60 + now.getMinutes()
+  const remainder = totalMinutes % slotMinutes
+  const rounded = remainder === 0 ? totalMinutes : totalMinutes + (slotMinutes - remainder)
+  const h = Math.floor(rounded / 60) % 24
+  const m = rounded % 60
+  return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`
 }
 
 export function DiaryView({ date, profile, appointments }: DiaryViewProps) {
@@ -45,6 +58,10 @@ export function DiaryView({ date, profile, appointments }: DiaryViewProps) {
 
   function handleDateLabelClick() {
     dateInputRef.current?.showPicker()
+  }
+
+  function handleFabPress() {
+    setSelectedSlotTime(nextSlotTime(profile.default_slot_minutes))
   }
 
   return (
@@ -120,11 +137,30 @@ export function DiaryView({ date, profile, appointments }: DiaryViewProps) {
         />
       </div>
 
-      {/* BookingSheet will be added in Plan 03-03 */}
-      {/* selectedSlotTime={selectedSlotTime} — passed to BookingSheet */}
+      {/* Floating + button — opens booking sheet at next available slot */}
+      <button
+        onClick={handleFabPress}
+        className="fixed bottom-24 right-4 z-30 w-14 h-14 bg-black text-white rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-transform"
+        aria-label="New appointment"
+      >
+        <Plus size={24} />
+      </button>
 
-      {/* AppointmentSheet will be added in Plan 03-03 */}
-      {/* selectedAppointment={selectedAppointment} — passed to AppointmentSheet */}
+      {/* Booking sheet — opened when a slot is tapped or FAB pressed */}
+      <BookingSheet
+        open={selectedSlotTime !== null}
+        onOpenChange={(open) => { if (!open) setSelectedSlotTime(null) }}
+        date={date}
+        slotTime={selectedSlotTime}
+      />
+
+      {/* Appointment detail sheet — opened when an appointment block is tapped */}
+      <AppointmentSheet
+        open={selectedAppointment !== null}
+        onOpenChange={(open) => { if (!open) setSelectedAppointment(null) }}
+        appointment={selectedAppointment}
+        date={date}
+      />
     </div>
   )
 }
