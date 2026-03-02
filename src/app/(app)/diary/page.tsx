@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
+import { Appointment } from '@/lib/types/database'
 import { DiaryView } from '@/components/diary/diary-view'
 
 interface DiaryPageProps {
@@ -32,9 +33,9 @@ export default async function DiaryPage({ searchParams }: DiaryPageProps) {
     supabase
       .from('appointments')
       .select(`
-        id, client_id, starts_at, ends_at, status, notes,
+        id, owner_user_id, client_id, starts_at, ends_at, status, notes, created_at, updated_at,
         clients(first_name, last_name),
-        appointment_services(service_id, service_name, service_price, service_duration_minutes)
+        appointment_services(id, owner_user_id, appointment_id, service_id, service_name, service_price, service_duration_minutes, created_at)
       `)
       .eq('owner_user_id', user.id)
       .gte('starts_at', dayStart)
@@ -46,11 +47,15 @@ export default async function DiaryPage({ searchParams }: DiaryPageProps) {
     redirect('/onboarding')
   }
 
+  // Cast is required because Supabase infers joined rows as arrays, but clients is a
+  // many-to-one join (single object) matching our Appointment type definition.
+  const appointments = (appointmentsResult.data ?? []) as unknown as Appointment[]
+
   return (
     <DiaryView
       date={dateStr}
       profile={profileResult.data}
-      appointments={appointmentsResult.data ?? []}
+      appointments={appointments}
     />
   )
 }
