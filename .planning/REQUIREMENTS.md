@@ -24,8 +24,8 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Booking & Diary
 
-- [ ] **BOOK-01**: User can view today's diary with slot-based schedule
-- [ ] **BOOK-02**: User can navigate to other days via date picker
+- [x] **BOOK-01**: User can view today's diary with slot-based schedule
+- [x] **BOOK-02**: User can navigate to other days via date picker
 - [ ] **BOOK-03**: User can create appointments by selecting client and one or more services
 - [ ] **BOOK-04**: User can add notes to appointments
 - [ ] **BOOK-05**: User can update appointment status (booked, completed, cancelled, no-show)
@@ -122,8 +122,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SERV-02 | Phase 2 | Complete (02-02) |
 | SERV-03 | Phase 2 | Complete (02-02) |
 | SERV-04 | Phase 2 | Complete (02-02) |
-| BOOK-01 | Phase 3 | Pending |
-| BOOK-02 | Phase 3 | Pending |
+| BOOK-01 | Phase 3 | Complete (03-02) |
+| BOOK-02 | Phase 3 | Complete (03-02) |
 | BOOK-03 | Phase 3 | Pending |
 | BOOK-04 | Phase 3 | Pending |
 | BOOK-05 | Phase 3 | Pending |
@@ -154,4 +154,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-03-01*
-*Last updated: 2026-03-01 after 02-04 completion (CLNT-04 through CLNT-08 complete)*
+*Last updated: 2026-03-02 after 03-02 completion (BOOK-01, BOOK-02 complete)*

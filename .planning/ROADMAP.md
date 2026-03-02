@@ -62,7 +62,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   5. User can reschedule an appointment by moving it to a different slot or day
 **Plans**: 4 plans
 - [x] 03-01-PLAN.md — Appointment types, Server Actions, diary utilities (Wave 1)
-- [ ] 03-02-PLAN.md — Diary page, CSS Grid slot layout, date navigation (Wave 2)
+- [x] 03-02-PLAN.md — Diary page, CSS Grid slot layout, date navigation (Wave 2)
 - [ ] 03-03-PLAN.md — Booking sheet, appointment detail sheet, status management (Wave 3)
 - [ ] 03-04-PLAN.md — Human verification checkpoint for complete Phase 3 (Wave 4)
 
@@ -95,6 +95,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete | 2026-03-01 |
 | 2. Setup | 5/5 | Complete | 2026-03-01 |
-| 3. Booking | 1/4 | In progress | - |
+| 3. Booking | 2/4 | In progress | - |
 | 4. Payments | 0/? | Not started | - |
 | 5. Polish | 0/? | Not started | - |

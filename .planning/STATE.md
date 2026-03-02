@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in_progress
-last_updated: "2026-03-02T20:43:00Z"
+last_updated: "2026-03-02T20:49:08Z"
 progress:
   total_phases: 5
   completed_phases: 2
   total_plans: 12
-  completed_plans: 9
+  completed_plans: 10
 ---
 
 # Project State
@@ -23,11 +23,11 @@ See: .planning/PROJECT.md (updated 2026-03-01)
 ## Current Position
 
 Phase: 3 of 5 (Booking)
-Plan: 1 of 4 in current phase (03-01 complete)
+Plan: 2 of 4 in current phase (03-02 complete)
 Status: In progress
-Last activity: 2026-03-02 — Plan 03-01 completed (appointment types, Server Actions, diary utilities)
+Last activity: 2026-03-02 — Plan 03-02 completed (diary page, CSS Grid slot layout, date navigation)
 
-Progress: [██████░░░░] 56%
+Progress: [███████░░░] 60%
 
 ## Performance Metrics
 
@@ -73,6 +73,9 @@ Recent decisions affecting current work:
 - Working hours validation returns { error: null, warning } (soft warning, not hard error) so UI can offer override checkbox
 - Rollback orphaned appointment by deleting it if appointment_services insert fails — Supabase JS client does not support DB-level transactions
 - 23P01 exclusion constraint error caught explicitly in createAppointment and rescheduleAppointment for user-friendly double-booking messages
+- Supabase joined row type cast (as unknown as Appointment[]) — Supabase JS infers one-to-many shape for foreign key joins; our Appointment type uses single object (many-to-one FK); minimal fix without adding generated DB types
+- CSS Grid diary slot layout: SLOT_HEIGHT_PX=60, TIME_GUTTER_WIDTH=56, absolute appointment positioning using (startMinutes - dayStartMinutes) / slotMinutes * slotHeightPx
+- Native date picker trigger: visually hidden input[type=date] with showPicker() called on label click — avoids custom date picker library
 
 ### Pending Todos
 
@@ -87,5 +90,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 03-01-PLAN.md (Appointment types, Server Actions, diary utilities)
-Resume file: .planning/phases/03-booking/03-02-PLAN.md
+Stopped at: Completed 03-02-PLAN.md (Diary page, CSS Grid slot layout, date navigation)
+Resume file: .planning/phases/03-booking/03-03-PLAN.md
