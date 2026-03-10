@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 05-03-PLAN.md — Phase 5 human verification approved, all phases complete (v1.0)
-last_updated: "2026-03-10T20:49:59.354Z"
+stopped_at: Completed 06-01-PLAN.md — client notes preview surfaced in BookingSheet and AppointmentSheet
+last_updated: "2026-03-10T21:25:46.493Z"
 last_activity: "2026-03-10 — Plan 05-03 complete: Phase 5 human verification approved — CSV exports, audit log, iOS PWA all verified"
 progress:
-  total_phases: 5
+  total_phases: 6
   completed_phases: 5
-  total_plans: 18
-  completed_plans: 18
+  total_plans: 20
+  completed_plans: 19
   percent: 100
 ---
 
@@ -54,6 +54,7 @@ Progress: [██████████] 100%
 | Phase 05-polish P03 | 5 | 1 task | 0 files |
 | Phase 05-polish P02 | 2 | 2 tasks | 3 files |
 | Phase 05-polish P01 | 3 | 2 tasks | 2 files |
+| Phase 06-booking-client-notes P01 | 2 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -97,6 +98,7 @@ Recent decisions affecting current work:
 - [Phase 05-polish]: Merge colour_formulas into notes CSV export with note_type='colour_formula' — single download simpler for user
 - [Phase 05-polish]: Anchor <a> tags (not buttons) for CSV export in Settings — browser handles Content-Disposition download natively in Server Components
 - [Phase 05-polish]: Phase 5 human verification approved — CSV exports, audit log, and iOS PWA verified correct; v1.0 milestone complete
+- [Phase 06-booking-client-notes]: ClientNotesPreview defaults to collapsed — compact and non-blocking; no owner_user_id filter on notes queries (RLS enforced); limit(3) notes + limit(1) formula for preview context
 
 ### Pending Todos
 
@@ -110,6 +112,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-10T21:00:00.000Z
-Stopped at: Completed 05-03-PLAN.md — Phase 5 human verification approved, all phases complete (v1.0)
+Last session: 2026-03-10T21:25:46.490Z
+Stopped at: Completed 06-01-PLAN.md — client notes preview surfaced in BookingSheet and AppointmentSheet
 Resume file: None

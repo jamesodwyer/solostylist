@@ -141,7 +141,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CLNT-05 | Phase 2 | Complete (02-04) |
 | CLNT-06 | Phase 2 | Complete (02-04) |
 | CLNT-07 | Phase 2 | Complete (02-04) |
-| CLNT-08 | Phase 6 | Pending |
+| CLNT-08 | Phase 6 | Complete |
 | DATA-01 | Phase 1 | Complete |
 | DATA-02 | Phase 5 | Complete |
 | DATA-03 | Phase 5 | Complete |

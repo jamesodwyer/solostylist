@@ -118,4 +118,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 3. Booking | 4/4 | Complete | 2026-03-10 |
 | 4. Payments | 3/3 | Complete | 2026-03-10 |
 | 5. Polish | 3/3 | Complete | 2026-03-10 |
-| 6. Booking Client Notes | 0/2 | Planned | -- |
+| 6. Booking Client Notes | 1/2 | In Progress|  |
