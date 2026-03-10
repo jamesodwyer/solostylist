@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 04-02-PLAN.md — createAdjustment Server Action, AdjustmentSheet, PaymentList, Money page with daily totals, client payments tab
-last_updated: "2026-03-10T20:19:25.809Z"
+stopped_at: Completed 05-02-PLAN.md — audit log gaps for deleteNote, deleteColourFormula, updateAppointmentStatus (cancelled/no_show); iOS keyboard fix in layout.tsx
+last_updated: "2026-03-10T20:40:54.568Z"
 last_activity: "2026-03-02 — Plan 04-02 complete: createAdjustment Server Action, AdjustmentSheet, PaymentList, Money page with daily totals, client payments tab"
 progress:
   total_phases: 5
   completed_phases: 4
-  total_plans: 15
-  completed_plans: 15
+  total_plans: 18
+  completed_plans: 16
   percent: 72
 ---
 
@@ -51,6 +51,7 @@ Progress: [████████░░] 72%
 - Trend: Auto tasks fast; human-verify checkpoints dominate wall-clock time
 
 *Updated after each plan completion*
+| Phase 05-polish P02 | 2 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -89,6 +90,7 @@ Recent decisions affecting current work:
 - Money page totals computed server-side in integer pennies — no float arithmetic risk, available for SSR render
 - Void locks amount to full original payment (readOnly input); refund allows partial editing up to original amount
 - AdjustmentSheet resets all state on close to prevent stale values bleeding between sessions
+- [Phase 05-polish]: Audit log for appointment status scoped to cancelled/no_show only — booked/completed transitions are non-sensitive and produce no audit rows
 
 ### Pending Todos
 
@@ -102,6 +104,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-02
-Stopped at: Completed 04-02-PLAN.md — createAdjustment Server Action, AdjustmentSheet, PaymentList, Money page with daily totals, client payments tab
-Resume file: .planning/phases/04-payments/04-03-PLAN.md
+Last session: 2026-03-10T20:40:54.566Z
+Stopped at: Completed 05-02-PLAN.md — audit log gaps for deleteNote, deleteColourFormula, updateAppointmentStatus (cancelled/no_show); iOS keyboard fix in layout.tsx
+Resume file: None
