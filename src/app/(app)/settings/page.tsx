@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import { ChevronRight, Store, Clock, CalendarClock, Phone } from 'lucide-react'
+import { ChevronRight, Store, Clock, CalendarClock, Phone, Download } from 'lucide-react'
 import type { WorkingHours } from '@/lib/types/database'
 
 function formatWorkingHoursSummary(hours: WorkingHours | null): string {
@@ -54,7 +54,7 @@ export default async function SettingsPage() {
   )
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen bg-gray-50 pb-24">
       <div className="px-4 pt-10 pb-6">
         <h1 className="text-2xl font-bold text-black">Settings</h1>
       </div>
@@ -151,6 +151,79 @@ export default async function SettingsPage() {
             </div>
             <ChevronRight className="w-4 h-4 text-gray-400 shrink-0" />
           </Link>
+        </div>
+      </div>
+
+      {/* Export Data */}
+      <div className="px-4 mt-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div className="px-4 py-3 border-b border-gray-100">
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+              Export Data
+            </p>
+          </div>
+
+          {/* Clients */}
+          <a
+            href="/api/export/clients"
+            className="flex items-center gap-3 px-4 py-3 min-h-[44px] active:bg-gray-50 transition-colors"
+          >
+            <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
+              <Download className="w-4 h-4 text-gray-600" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium text-black">Export Clients (CSV)</p>
+            </div>
+            <Download className="w-4 h-4 text-gray-400 shrink-0" />
+          </a>
+
+          <div className="h-px bg-gray-100 mx-4" />
+
+          {/* Appointments */}
+          <a
+            href="/api/export/appointments"
+            className="flex items-center gap-3 px-4 py-3 min-h-[44px] active:bg-gray-50 transition-colors"
+          >
+            <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
+              <Download className="w-4 h-4 text-gray-600" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium text-black">Export Appointments (CSV)</p>
+            </div>
+            <Download className="w-4 h-4 text-gray-400 shrink-0" />
+          </a>
+
+          <div className="h-px bg-gray-100 mx-4" />
+
+          {/* Payments */}
+          <a
+            href="/api/export/payments"
+            className="flex items-center gap-3 px-4 py-3 min-h-[44px] active:bg-gray-50 transition-colors"
+          >
+            <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
+              <Download className="w-4 h-4 text-gray-600" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium text-black">Export Payments (CSV)</p>
+            </div>
+            <Download className="w-4 h-4 text-gray-400 shrink-0" />
+          </a>
+
+          <div className="h-px bg-gray-100 mx-4" />
+
+          {/* Notes */}
+          <a
+            href="/api/export/notes"
+            className="flex items-center gap-3 px-4 py-3 min-h-[44px] active:bg-gray-50 transition-colors"
+          >
+            <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
+              <Download className="w-4 h-4 text-gray-600" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium text-black">Export Notes (CSV)</p>
+            </div>
+            <Download className="w-4 h-4 text-gray-400 shrink-0" />
+          </a>
         </div>
       </div>
     </div>
