@@ -97,17 +97,19 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Goal**: Client notes and colour formulas are visible to the stylist during booking and appointment view
 **Depends on**: Phase 2, Phase 3
 **Requirements**: CLNT-08
-**Gap Closure**: Closes CLNT-08 (partial), integration gap (booking-sheet → client notes/formulas)
+**Gap Closure**: Closes CLNT-08 (partial), integration gap (booking-sheet -> client notes/formulas)
 **Success Criteria** (what must be TRUE):
   1. After selecting a client in the booking sheet, the stylist sees recent notes and colour formulas
   2. When viewing an existing appointment, client notes and colour formulas are displayed
   3. Notes display is compact and non-blocking (collapsible or summary view)
-**Plans**: TBD
+**Plans**: 2 plans
+- [ ] 06-01-PLAN.md — ClientNotesPreview component + integration into BookingSheet and AppointmentSheet (Wave 1)
+- [ ] 06-02-PLAN.md — Human verification checkpoint for complete Phase 6 (Wave 2)
 
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -116,4 +118,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 | 3. Booking | 4/4 | Complete | 2026-03-10 |
 | 4. Payments | 3/3 | Complete | 2026-03-10 |
 | 5. Polish | 3/3 | Complete | 2026-03-10 |
-| 6. Booking Client Notes | 0/0 | Planned | — |
+| 6. Booking Client Notes | 0/2 | Planned | -- |
