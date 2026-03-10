@@ -9,11 +9,11 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Authentication & Setup
 
-- [x] **AUTH-01**: User can sign in securely via email OTP or magic link (no passwords)
+- [ ] **AUTH-01**: User can sign in securely via email OTP or magic link (no passwords)
 - [x] **AUTH-02**: User can set up business profile (trading name, phone, optional address)
 - [x] **AUTH-03**: User can configure working hours per weekday
 - [x] **AUTH-04**: User can set default appointment slot size (15-min default)
-- [ ] **AUTH-05**: App supports PWA add-to-home-screen on mobile
+- [x] **AUTH-05**: App supports PWA add-to-home-screen on mobile
 
 ### Services
 
@@ -26,19 +26,19 @@ Requirements for initial release. Each maps to roadmap phases.
 
 - [x] **BOOK-01**: User can view today's diary with slot-based schedule
 - [x] **BOOK-02**: User can navigate to other days via date picker
-- [ ] **BOOK-03**: User can create appointments by selecting client and one or more services
-- [ ] **BOOK-04**: User can add notes to appointments
-- [ ] **BOOK-05**: User can update appointment status (booked, completed, cancelled, no-show)
-- [ ] **BOOK-06**: User can move or reschedule appointments
-- [ ] **BOOK-07**: System prevents double-booking (PostgreSQL exclusion constraint)
-- [ ] **BOOK-08**: Appointments respect working hours with manual override option
+- [x] **BOOK-03**: User can create appointments by selecting client and one or more services
+- [x] **BOOK-04**: User can add notes to appointments
+- [x] **BOOK-05**: User can update appointment status (booked, completed, cancelled, no-show)
+- [x] **BOOK-06**: User can move or reschedule appointments
+- [x] **BOOK-07**: System prevents double-booking (PostgreSQL exclusion constraint)
+- [x] **BOOK-08**: Appointments respect working hours with manual override option
 
 ### Payments
 
 - [x] **PAY-01**: User can record a cash payment against a client/appointment
 - [x] **PAY-02**: User can record a card payment against a client/appointment (log only)
 - [x] **PAY-03**: Payment records store method, amount, timestamp
-- [ ] **PAY-04**: User can record refund/void as adjustment transaction (audit trail)
+- [x] **PAY-04**: User can record refund/void as adjustment transaction (audit trail)
 
 ### Clients & CRM
 
@@ -113,27 +113,27 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | Phase 1 | Complete |
+| AUTH-01 | Phase 6 | Pending |
 | AUTH-02 | Phase 2 | Complete (02-01) |
 | AUTH-03 | Phase 2 | Complete (02-01) |
 | AUTH-04 | Phase 2 | Complete (02-01) |
-| AUTH-05 | Phase 1 | Pending |
+| AUTH-05 | Phase 1 | Complete |
 | SERV-01 | Phase 2 | Complete (02-02) |
 | SERV-02 | Phase 2 | Complete (02-02) |
 | SERV-03 | Phase 2 | Complete (02-02) |
 | SERV-04 | Phase 2 | Complete (02-02) |
 | BOOK-01 | Phase 3 | Complete (03-02) |
 | BOOK-02 | Phase 3 | Complete (03-02) |
-| BOOK-03 | Phase 3 | Pending |
-| BOOK-04 | Phase 3 | Pending |
-| BOOK-05 | Phase 3 | Pending |
-| BOOK-06 | Phase 3 | Pending |
-| BOOK-07 | Phase 3 | Pending |
-| BOOK-08 | Phase 3 | Pending |
+| BOOK-03 | Phase 3 | Complete (03-01, 03-03) |
+| BOOK-04 | Phase 3 | Complete (03-01, 03-03) |
+| BOOK-05 | Phase 3 | Complete (03-01, 03-03) |
+| BOOK-06 | Phase 3 | Complete (03-01, 03-03) |
+| BOOK-07 | Phase 3 | Complete (03-01) |
+| BOOK-08 | Phase 3 | Complete (03-01, 03-03) |
 | PAY-01 | Phase 4 | Complete (04-01) |
 | PAY-02 | Phase 4 | Complete (04-01) |
 | PAY-03 | Phase 4 | Complete (04-01) |
-| PAY-04 | Phase 4 | Pending |
+| PAY-04 | Phase 4 | Complete (04-02, 04-03) |
 | CLNT-01 | Phase 2 | Complete (02-03) |
 | CLNT-02 | Phase 2 | Complete (02-03) |
 | CLNT-03 | Phase 2 | Complete (02-03) |
@@ -141,7 +141,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CLNT-05 | Phase 2 | Complete (02-04) |
 | CLNT-06 | Phase 2 | Complete (02-04) |
 | CLNT-07 | Phase 2 | Complete (02-04) |
-| CLNT-08 | Phase 2 | Complete (02-04) |
+| CLNT-08 | Phase 7 | Pending |
 | DATA-01 | Phase 1 | Complete |
 | DATA-02 | Phase 5 | Complete |
 | DATA-03 | Phase 5 | Complete |
@@ -154,4 +154,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-03-01*
-*Last updated: 2026-03-02 after 03-02 completion (BOOK-01, BOOK-02 complete)*
+*Last updated: 2026-03-10 after milestone audit gap closure (AUTH-01→Phase 6, CLNT-08→Phase 7, 8 stale Pending entries fixed)*
