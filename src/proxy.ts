@@ -33,9 +33,7 @@ export async function proxy(request: NextRequest) {
   } = await supabase.auth.getUser()
 
   const isAuthRoute =
-    request.nextUrl.pathname.startsWith('/login') ||
-    request.nextUrl.pathname.startsWith('/check-email') ||
-    request.nextUrl.pathname.startsWith('/auth/callback')
+    request.nextUrl.pathname.startsWith('/login')
 
   if (!user && !isAuthRoute) {
     const url = request.nextUrl.clone()
@@ -44,7 +42,6 @@ export async function proxy(request: NextRequest) {
   }
 
   // If user is authenticated and on /login: do NOT redirect.
-  // User can re-request a magic link at any time — this is the intended flow.
 
   return supabaseResponse
 }

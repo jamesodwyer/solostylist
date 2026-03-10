@@ -12,13 +12,12 @@ Five phases following the feature dependency graph: a secure foundation must exi
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [x] **Phase 1: Foundation** - Supabase schema, RLS, app shell, and magic-link auth
+- [x] **Phase 1: Foundation** - Supabase schema, RLS, app shell, and email+password auth
 - [x] **Phase 2: Setup** - Business profile, services catalogue, and client CRM
 - [x] **Phase 3: Booking** - Day diary, appointment creation, and scheduling rules
 - [x] **Phase 4: Payments** - Payment logging, refunds, and audit trail
 - [x] **Phase 5: Polish** - CSV export, PWA hardening, and data security verification
-- [ ] **Phase 6: Fix Magic-Link Auth** - Wire login form to magic-link flow, fix doc gaps
-- [ ] **Phase 7: Booking Client Notes** - Surface client notes in booking and appointment views
+- [ ] **Phase 6: Booking Client Notes** - Surface client notes in booking and appointment views
 
 ## Phase Details
 
@@ -94,19 +93,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] 05-02-PLAN.md — Audit log completeness patches and iOS PWA viewport fix (Wave 1)
 - [x] 05-03-PLAN.md — Human verification checkpoint for complete Phase 5 (Wave 2)
 
-### Phase 6: Fix Magic-Link Auth
-**Goal**: The login flow uses magic link / email OTP as AUTH-01 requires — no password field
-**Depends on**: Phase 1
-**Requirements**: AUTH-01
-**Gap Closure**: Closes AUTH-01 (partial), integration gap (login-form → signInWithMagicLink), flow gap (Sign up → onboard broken at login)
-**Success Criteria** (what must be TRUE):
-  1. Login form sends a magic link email — no password field exists
-  2. User receives email, clicks link, and lands in the protected app shell
-  3. The check-email page and /auth/callback route are reachable from the login UI
-  4. REQUIREMENTS.md traceability table has no stale Pending entries
-**Plans**: TBD
-
-### Phase 7: Booking Client Notes
+### Phase 6: Booking Client Notes
 **Goal**: Client notes and colour formulas are visible to the stylist during booking and appointment view
 **Depends on**: Phase 2, Phase 3
 **Requirements**: CLNT-08
@@ -120,7 +107,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
+Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -129,5 +116,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 3. Booking | 4/4 | Complete | 2026-03-10 |
 | 4. Payments | 3/3 | Complete | 2026-03-10 |
 | 5. Polish | 3/3 | Complete | 2026-03-10 |
-| 6. Fix Magic-Link Auth | 0/0 | Planned | — |
-| 7. Booking Client Notes | 0/0 | Planned | — |
+| 6. Booking Client Notes | 0/0 | Planned | — |

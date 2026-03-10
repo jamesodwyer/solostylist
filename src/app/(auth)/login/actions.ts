@@ -3,20 +3,17 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 
-export async function signInWithMagicLink(email: string) {
+export async function signInWithPassword(email: string, password: string) {
   const supabase = await createClient()
 
-  const { error } = await supabase.auth.signInWithOtp({
+  const { error } = await supabase.auth.signInWithPassword({
     email,
-    options: {
-      emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
-      // shouldCreateUser: true is the default — new users are created automatically
-    },
+    password,
   })
 
   if (error) {
     return { error: error.message }
   }
 
-  redirect('/check-email')
+  redirect('/onboarding')
 }

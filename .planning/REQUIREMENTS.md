@@ -9,7 +9,7 @@ Requirements for initial release. Each maps to roadmap phases.
 
 ### Authentication & Setup
 
-- [ ] **AUTH-01**: User can sign in securely via email OTP or magic link (no passwords)
+- [x] **AUTH-01**: User can sign in securely via email and password
 - [x] **AUTH-02**: User can set up business profile (trading name, phone, optional address)
 - [x] **AUTH-03**: User can configure working hours per weekday
 - [x] **AUTH-04**: User can set default appointment slot size (15-min default)
@@ -113,7 +113,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | Phase 6 | Pending |
+| AUTH-01 | Phase 1 | Complete |
 | AUTH-02 | Phase 2 | Complete (02-01) |
 | AUTH-03 | Phase 2 | Complete (02-01) |
 | AUTH-04 | Phase 2 | Complete (02-01) |
@@ -141,7 +141,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CLNT-05 | Phase 2 | Complete (02-04) |
 | CLNT-06 | Phase 2 | Complete (02-04) |
 | CLNT-07 | Phase 2 | Complete (02-04) |
-| CLNT-08 | Phase 7 | Pending |
+| CLNT-08 | Phase 6 | Pending |
 | DATA-01 | Phase 1 | Complete |
 | DATA-02 | Phase 5 | Complete |
 | DATA-03 | Phase 5 | Complete |
