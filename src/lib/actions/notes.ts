@@ -107,6 +107,18 @@ export async function deleteNote(id: string, clientId: string) {
     return { error: error.message }
   }
 
+  // Audit log: record note deletion (non-blocking)
+  const { error: auditError } = await supabase.from('audit_log').insert({
+    owner_user_id: user.id,
+    action: 'note_deleted',
+    entity_type: 'client_note',
+    entity_id: id,
+    details: { client_id: clientId },
+  })
+  if (auditError) {
+    console.error('Audit log insert failed:', auditError.message)
+  }
+
   revalidatePath(`/clients/${clientId}`)
   return { success: true }
 }
@@ -206,6 +218,18 @@ export async function deleteColourFormula(id: string, clientId: string) {
 
   if (error) {
     return { error: error.message }
+  }
+
+  // Audit log: record colour formula deletion (non-blocking)
+  const { error: auditError } = await supabase.from('audit_log').insert({
+    owner_user_id: user.id,
+    action: 'colour_formula_deleted',
+    entity_type: 'colour_formula',
+    entity_id: id,
+    details: { client_id: clientId },
+  })
+  if (auditError) {
+    console.error('Audit log insert failed:', auditError.message)
   }
 
   revalidatePath(`/clients/${clientId}`)

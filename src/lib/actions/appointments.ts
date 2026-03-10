@@ -180,6 +180,20 @@ export async function updateAppointmentStatus(
     return { error: error.message }
   }
 
+  // Audit log: record cancellation/no-show (non-blocking)
+  if (status === 'cancelled' || status === 'no_show') {
+    const { error: auditError } = await supabase.from('audit_log').insert({
+      owner_user_id: user.id,
+      action: `appointment_${status}`,
+      entity_type: 'appointment',
+      entity_id: appointmentId,
+      details: { status },
+    })
+    if (auditError) {
+      console.error('Audit log insert failed:', auditError.message)
+    }
+  }
+
   revalidatePath('/diary')
   return { success: true }
 }
