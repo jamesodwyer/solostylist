@@ -13,10 +13,10 @@ Five phases following the feature dependency graph: a secure foundation must exi
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Supabase schema, RLS, app shell, and magic-link auth
-- [ ] **Phase 2: Setup** - Business profile, services catalogue, and client CRM
-- [ ] **Phase 3: Booking** - Day diary, appointment creation, and scheduling rules
-- [ ] **Phase 4: Payments** - Payment logging, refunds, and audit trail
-- [ ] **Phase 5: Polish** - CSV export, PWA hardening, and data security verification
+- [x] **Phase 2: Setup** - Business profile, services catalogue, and client CRM
+- [x] **Phase 3: Booking** - Day diary, appointment creation, and scheduling rules
+- [x] **Phase 4: Payments** - Payment logging, refunds, and audit trail
+- [x] **Phase 5: Polish** - CSV export, PWA hardening, and data security verification
 
 ## Phase Details
 
@@ -64,7 +64,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] 03-01-PLAN.md — Appointment types, Server Actions, diary utilities (Wave 1)
 - [x] 03-02-PLAN.md — Diary page, CSS Grid slot layout, date navigation (Wave 2)
 - [x] 03-03-PLAN.md — Booking sheet, appointment detail sheet, status management (Wave 3)
-- [ ] 03-04-PLAN.md — Human verification checkpoint for complete Phase 3 (Wave 4)
+- [x] 03-04-PLAN.md — Human verification checkpoint for complete Phase 3 (Wave 4)
 
 ### Phase 4: Payments
 **Goal**: A stylist can take money for a completed appointment and see it recorded correctly
@@ -77,7 +77,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 - [x] 04-01-PLAN.md — Payment types, createPayment Server Action, PaymentSheet, appointment sheet integration (Wave 1)
 - [x] 04-02-PLAN.md — Adjustment sheet, Money page with daily totals, client timeline payments (Wave 2)
-- [ ] 04-03-PLAN.md — Human verification checkpoint for complete Phase 4 (Wave 3)
+- [x] 04-03-PLAN.md — Human verification checkpoint for complete Phase 4 (Wave 3)
 
 ### Phase 5: Polish
 **Goal**: The app is safe to hand to a real stylist — data is portable, security is audited, and mobile UX is verified
@@ -88,9 +88,9 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Every sensitive action (invoice adjustment, refund, deletion) appears in the audit log with user ID and timestamp
   3. The app works correctly on iOS Safari as a home-screen PWA — bottom nav clears the home indicator, keyboard does not trap scroll
 **Plans**: 3 plans
-- [ ] 05-01-PLAN.md — CSV export Route Handler and Export Data section in Settings (Wave 1)
-- [ ] 05-02-PLAN.md — Audit log completeness patches and iOS PWA viewport fix (Wave 1)
-- [ ] 05-03-PLAN.md — Human verification checkpoint for complete Phase 5 (Wave 2)
+- [x] 05-01-PLAN.md — CSV export Route Handler and Export Data section in Settings (Wave 1)
+- [x] 05-02-PLAN.md — Audit log completeness patches and iOS PWA viewport fix (Wave 1)
+- [x] 05-03-PLAN.md — Human verification checkpoint for complete Phase 5 (Wave 2)
 
 ## Progress
 
@@ -101,6 +101,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 |-------|----------------|--------|-----------|
 | 1. Foundation | 3/3 | Complete | 2026-03-01 |
 | 2. Setup | 5/5 | Complete | 2026-03-01 |
-| 3. Booking | 3/4 | In progress | - |
-| 4. Payments | 2/3 | In progress | - |
-| 5. Polish | 2/3 | In Progress|  |
+| 3. Booking | 4/4 | Complete | 2026-03-10 |
+| 4. Payments | 3/3 | Complete | 2026-03-10 |
+| 5. Polish | 3/3 | Complete | 2026-03-10 |
