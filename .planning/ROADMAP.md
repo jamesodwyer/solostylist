@@ -87,7 +87,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   1. User can export all their data (clients, appointments, payments, notes) as CSV files that open correctly in Excel
   2. Every sensitive action (invoice adjustment, refund, deletion) appears in the audit log with user ID and timestamp
   3. The app works correctly on iOS Safari as a home-screen PWA — bottom nav clears the home indicator, keyboard does not trap scroll
-**Plans**: TBD
+**Plans**: 3 plans
+- [ ] 05-01-PLAN.md — CSV export Route Handler and Export Data section in Settings (Wave 1)
+- [ ] 05-02-PLAN.md — Audit log completeness patches and iOS PWA viewport fix (Wave 1)
+- [ ] 05-03-PLAN.md — Human verification checkpoint for complete Phase 5 (Wave 2)
 
 ## Progress
 
@@ -100,4 +103,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 2. Setup | 5/5 | Complete | 2026-03-01 |
 | 3. Booking | 3/4 | In progress | - |
 | 4. Payments | 2/3 | In progress | - |
-| 5. Polish | 0/? | Not started | - |
+| 5. Polish | 0/3 | Not started | - |
