@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 05-02-PLAN.md — audit log gaps for deleteNote, deleteColourFormula, updateAppointmentStatus (cancelled/no_show); iOS keyboard fix in layout.tsx
-last_updated: "2026-03-10T20:40:54.568Z"
+stopped_at: Completed 05-01-PLAN.md — CSV export Route Handler for clients/appointments/payments/notes, Export Data section in Settings
+last_updated: "2026-03-10T20:42:22.635Z"
 last_activity: "2026-03-02 — Plan 04-02 complete: createAdjustment Server Action, AdjustmentSheet, PaymentList, Money page with daily totals, client payments tab"
 progress:
   total_phases: 5
   completed_phases: 4
   total_plans: 18
-  completed_plans: 16
+  completed_plans: 17
   percent: 72
 ---
 
@@ -52,6 +52,7 @@ Progress: [████████░░] 72%
 
 *Updated after each plan completion*
 | Phase 05-polish P02 | 2 | 2 tasks | 3 files |
+| Phase 05-polish P01 | 3 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -91,6 +92,9 @@ Recent decisions affecting current work:
 - Void locks amount to full original payment (readOnly input); refund allows partial editing up to original amount
 - AdjustmentSheet resets all state on close to prevent stale values bleeding between sessions
 - [Phase 05-polish]: Audit log for appointment status scoped to cancelled/no_show only — booked/completed transitions are non-sensitive and produce no audit rows
+- [Phase 05-polish]: Inline buildCsv utility (not npm csv-stringify) — 4 fixed schemas; RFC 4180 escaping with UTF-8 BOM prepend for Excel Windows compatibility
+- [Phase 05-polish]: Merge colour_formulas into notes CSV export with note_type='colour_formula' — single download simpler for user
+- [Phase 05-polish]: Anchor <a> tags (not buttons) for CSV export in Settings — browser handles Content-Disposition download natively in Server Components
 
 ### Pending Todos
 
@@ -104,6 +108,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-10T20:40:54.566Z
-Stopped at: Completed 05-02-PLAN.md — audit log gaps for deleteNote, deleteColourFormula, updateAppointmentStatus (cancelled/no_show); iOS keyboard fix in layout.tsx
+Last session: 2026-03-10T20:42:22.632Z
+Stopped at: Completed 05-01-PLAN.md — CSV export Route Handler for clients/appointments/payments/notes, Export Data section in Settings
 Resume file: None
