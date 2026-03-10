@@ -3,6 +3,7 @@
 import { useState, useEffect, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import { Pencil, ChevronLeft, Loader2, AlertTriangle, Banknote } from 'lucide-react'
+import { ClientNotesPreview } from '@/components/diary/client-notes-preview'
 import {
   Sheet,
   SheetContent,
@@ -55,6 +56,11 @@ export function AppointmentSheet({ open, onOpenChange, appointment, date, onTake
   const [editedNotes, setEditedNotes] = useState('')
   const [notesPending, setNotesPending] = useState(false)
 
+  // Client notes state
+  const [clientNotes, setClientNotes] = useState<Array<{ id: string; note_type: string; content: string; created_at: string }>>([])
+  const [latestFormula, setLatestFormula] = useState<{ id: string; formula: string; notes: string | null; created_at: string } | null>(null)
+  const [clientNotesLoaded, setClientNotesLoaded] = useState(false)
+
   // Reset mode when appointment changes or sheet closes
   useEffect(() => {
     if (!open) {
@@ -72,6 +78,9 @@ export function AppointmentSheet({ open, onOpenChange, appointment, date, onTake
       setWarning(null)
       setOverrideHours(false)
       setHasPayment(false)
+      setClientNotes([])
+      setLatestFormula(null)
+      setClientNotesLoaded(false)
       // Pre-fill reschedule fields with current appointment values
       const startDate = new Date(appointment.starts_at)
       setNewDate(startDate.toISOString().split('T')[0])
@@ -88,6 +97,26 @@ export function AppointmentSheet({ open, onOpenChange, appointment, date, onTake
         .eq('payment_type', 'payment')
         .limit(1)
         .then(({ data }) => setHasPayment((data ?? []).length > 0))
+      // Fetch client notes and colour formulas
+      supabase
+        .from('client_notes')
+        .select('id, note_type, content, created_at')
+        .eq('client_id', appointment.client_id)
+        .order('created_at', { ascending: false })
+        .limit(3)
+        .then(({ data: notesData }) => {
+          setClientNotes(notesData ?? [])
+        })
+      supabase
+        .from('colour_formulas')
+        .select('id, formula, notes, created_at')
+        .eq('client_id', appointment.client_id)
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .then(({ data: formulaData }) => {
+          setLatestFormula(formulaData?.[0] ?? null)
+          setClientNotesLoaded(true)
+        })
     }
   }, [appointment])
 
@@ -243,6 +272,14 @@ export function AppointmentSheet({ open, onOpenChange, appointment, date, onTake
                   <p className="text-sm text-gray-400 italic px-1">No notes</p>
                 )}
               </div>
+
+              {/* Client notes and colour formulas */}
+              <ClientNotesPreview
+                notes={clientNotes}
+                latestFormula={latestFormula}
+                loading={!clientNotesLoaded}
+                clientId={appointment.client_id}
+              />
 
               {error && (
                 <p className="text-sm text-red-600 text-center">{error}</p>

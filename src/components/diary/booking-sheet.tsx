@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import { Search, X, Check, ChevronLeft, Loader2 } from 'lucide-react'
+import { ClientNotesPreview } from '@/components/diary/client-notes-preview'
 import {
   Sheet,
   SheetContent,
@@ -44,6 +45,11 @@ export function BookingSheet({ open, onOpenChange, date, slotTime }: BookingShee
   const [services, setServices] = useState<Service[]>([])
   const [servicesLoaded, setServicesLoaded] = useState(false)
 
+  // Client notes state
+  const [clientNotes, setClientNotes] = useState<Array<{ id: string; note_type: string; content: string; created_at: string }>>([])
+  const [latestFormula, setLatestFormula] = useState<{ id: string; formula: string; notes: string | null; created_at: string } | null>(null)
+  const [notesLoaded, setNotesLoaded] = useState(false)
+
   // Reset all state when sheet opens
   useEffect(() => {
     if (open) {
@@ -57,6 +63,9 @@ export function BookingSheet({ open, onOpenChange, date, slotTime }: BookingShee
       setClientQuery('')
       setClientResults([])
       setClientSearchPending(false)
+      setClientNotes([])
+      setLatestFormula(null)
+      setNotesLoaded(false)
     }
   }, [open])
 
@@ -92,6 +101,38 @@ export function BookingSheet({ open, onOpenChange, date, slotTime }: BookingShee
       if (clientTimerRef.current) clearTimeout(clientTimerRef.current)
     }
   }, [clientQuery])
+
+  // Fetch client notes and colour formulas when a client is selected
+  useEffect(() => {
+    if (!selectedClient) {
+      setClientNotes([])
+      setLatestFormula(null)
+      setNotesLoaded(false)
+      return
+    }
+    let cancelled = false
+    const supabase = createClient()
+    Promise.all([
+      supabase
+        .from('client_notes')
+        .select('id, note_type, content, created_at')
+        .eq('client_id', selectedClient.id)
+        .order('created_at', { ascending: false })
+        .limit(3),
+      supabase
+        .from('colour_formulas')
+        .select('id, formula, notes, created_at')
+        .eq('client_id', selectedClient.id)
+        .order('created_at', { ascending: false })
+        .limit(1),
+    ]).then(([notesRes, formulasRes]) => {
+      if (cancelled) return
+      setClientNotes(notesRes.data ?? [])
+      setLatestFormula(formulasRes.data?.[0] ?? null)
+      setNotesLoaded(true)
+    })
+    return () => { cancelled = true }
+  }, [selectedClient])
 
   // Load services when advancing to services step
   useEffect(() => {
@@ -145,7 +186,7 @@ export function BookingSheet({ open, onOpenChange, date, slotTime }: BookingShee
         client_id: selectedClient.id,
         starts_at: startsAt,
         ends_at: endsAt,
-        notes: notes || undefined,
+        notes: notes || '',
         override_working_hours: overrideHours,
         services: selectedServices.map(s => ({
           service_id: s.id,
@@ -307,6 +348,17 @@ export function BookingSheet({ open, onOpenChange, date, slotTime }: BookingShee
             </SheetHeader>
 
             <div className="flex-1 overflow-y-auto px-4 pb-4">
+              {/* Client notes preview */}
+              {selectedClient && (
+                <div className="mt-3 mb-1">
+                  <ClientNotesPreview
+                    notes={clientNotes}
+                    latestFormula={latestFormula}
+                    loading={!notesLoaded}
+                    clientId={selectedClient.id}
+                  />
+                </div>
+              )}
               {!servicesLoaded && (
                 <div className="flex items-center justify-center py-12">
                   <Loader2 className="size-5 animate-spin text-gray-400" />
