@@ -17,7 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Booking** - Day diary, appointment creation, and scheduling rules
 - [x] **Phase 4: Payments** - Payment logging, refunds, and audit trail
 - [x] **Phase 5: Polish** - CSV export, PWA hardening, and data security verification
-- [ ] **Phase 6: Booking Client Notes** - Surface client notes in booking and appointment views
+- [x] **Phase 6: Booking Client Notes** - Surface client notes in booking and appointment views (completed 2026-03-10)
 
 ## Phase Details
 
@@ -118,4 +118,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 3. Booking | 4/4 | Complete | 2026-03-10 |
 | 4. Payments | 3/3 | Complete | 2026-03-10 |
 | 5. Polish | 3/3 | Complete | 2026-03-10 |
-| 6. Booking Client Notes | 1/2 | In Progress|  |
+| 6. Booking Client Notes | 2/2 | Complete   | 2026-03-10 |

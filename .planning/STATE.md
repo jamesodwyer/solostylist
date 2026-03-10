@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Completed 06-01-PLAN.md — client notes preview surfaced in BookingSheet and AppointmentSheet
-last_updated: "2026-03-10T21:25:46.493Z"
+stopped_at: Completed 06-02-PLAN.md — Phase 6 human verification approved, CLNT-08 closed
+last_updated: "2026-03-10T21:29:09.327Z"
 last_activity: "2026-03-10 — Plan 05-03 complete: Phase 5 human verification approved — CSV exports, audit log, iOS PWA all verified"
 progress:
   total_phases: 6
-  completed_phases: 5
+  completed_phases: 6
   total_plans: 20
-  completed_plans: 19
+  completed_plans: 20
   percent: 100
 ---
 
@@ -55,6 +55,7 @@ Progress: [██████████] 100%
 | Phase 05-polish P02 | 2 | 2 tasks | 3 files |
 | Phase 05-polish P01 | 3 | 2 tasks | 2 files |
 | Phase 06-booking-client-notes P01 | 2 | 2 tasks | 3 files |
+| Phase 06-booking-client-notes P02 | 3 | 1 tasks | 0 files |
 
 ## Accumulated Context
 
@@ -99,6 +100,7 @@ Recent decisions affecting current work:
 - [Phase 05-polish]: Anchor <a> tags (not buttons) for CSV export in Settings — browser handles Content-Disposition download natively in Server Components
 - [Phase 05-polish]: Phase 5 human verification approved — CSV exports, audit log, and iOS PWA verified correct; v1.0 milestone complete
 - [Phase 06-booking-client-notes]: ClientNotesPreview defaults to collapsed — compact and non-blocking; no owner_user_id filter on notes queries (RLS enforced); limit(3) notes + limit(1) formula for preview context
+- [Phase 06-booking-client-notes]: Phase 6 human verification approved — collapsible ClientNotesPreview confirmed correct in BookingSheet services step and AppointmentSheet view mode; CLNT-08 requirement fully closed
 
 ### Pending Todos
 
@@ -112,6 +114,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-10T21:25:46.490Z
-Stopped at: Completed 06-01-PLAN.md — client notes preview surfaced in BookingSheet and AppointmentSheet
+Last session: 2026-03-10T21:29:09.324Z
+Stopped at: Completed 06-02-PLAN.md — Phase 6 human verification approved, CLNT-08 closed
 Resume file: None
