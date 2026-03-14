@@ -17,3 +17,18 @@ export async function signInWithPassword(email: string, password: string) {
 
   redirect('/onboarding')
 }
+
+export async function signUp(email: string, password: string) {
+  const supabase = await createClient()
+
+  const { error } = await supabase.auth.signUp({
+    email,
+    password,
+  })
+
+  if (error) {
+    return { error: error.message }
+  }
+
+  return { success: true }
+}
