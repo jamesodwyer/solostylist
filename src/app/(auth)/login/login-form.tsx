@@ -1,10 +1,10 @@
 'use client'
 
 import { useState, useTransition } from 'react'
-import { signInWithPassword, signUp } from './actions'
+import { signInWithPassword, signUp, resetPassword } from './actions'
 
 export function LoginForm() {
-  const [mode, setMode] = useState<'signin' | 'signup'>('signin')
+  const [mode, setMode] = useState<'signin' | 'signup' | 'forgot'>('signin')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
@@ -18,7 +18,7 @@ export function LoginForm() {
       setError('Please enter your email address.')
       return
     }
-    if (!password) {
+    if (mode !== 'forgot' && !password) {
       setError('Please enter your password.')
       return
     }
@@ -31,7 +31,14 @@ export function LoginForm() {
     setSuccess(null)
 
     startTransition(async () => {
-      if (mode === 'signup') {
+      if (mode === 'forgot') {
+        const result = await resetPassword(email.trim())
+        if (result?.error) {
+          setError(result.error)
+        } else if (result?.success) {
+          setSuccess('Check your email for a password reset link.')
+        }
+      } else if (mode === 'signup') {
         const result = await signUp(email.trim(), password)
         if (result?.error) {
           setError(result.error)
@@ -78,30 +85,32 @@ export function LoginForm() {
           />
         </div>
 
-        <div>
-          <label htmlFor="password" className="sr-only">
-            Password
-          </label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
-            required
-            disabled={isPending}
-            className="
-              w-full px-4 py-4 rounded-xl
-              bg-white/10 border border-white/20
-              text-white placeholder:text-white/40
-              text-base font-medium
-              focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50
-              disabled:opacity-50 disabled:cursor-not-allowed
-              transition-colors
-            "
-          />
-        </div>
+        {mode !== 'forgot' && (
+          <div>
+            <label htmlFor="password" className="sr-only">
+              Password
+            </label>
+            <input
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
+              required
+              disabled={isPending}
+              className="
+                w-full px-4 py-4 rounded-xl
+                bg-white/10 border border-white/20
+                text-white placeholder:text-white/40
+                text-base font-medium
+                focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50
+                disabled:opacity-50 disabled:cursor-not-allowed
+                transition-colors
+              "
+            />
+          </div>
+        )}
 
         {error && (
           <p className="text-red-400 text-sm font-medium px-1" role="alert">
@@ -134,12 +143,31 @@ export function LoginForm() {
                 className="inline-block w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin"
                 aria-hidden="true"
               />
-              {mode === 'signup' ? 'Creating account...' : 'Signing in...'}
+              {mode === 'forgot' ? 'Sending link...' : mode === 'signup' ? 'Creating account...' : 'Signing in...'}
             </>
           ) : (
-            mode === 'signup' ? 'Create account' : 'Sign in'
+            mode === 'forgot' ? 'Send reset link' : mode === 'signup' ? 'Create account' : 'Sign in'
           )}
         </button>
+
+        {mode === 'signin' && (
+          <button
+            type="button"
+            onClick={() => {
+              setMode('forgot')
+              setError(null)
+              setSuccess(null)
+            }}
+            disabled={isPending}
+            className="
+              w-full py-1 text-sm text-white/60 font-medium
+              hover:text-white/80 transition-colors
+              disabled:opacity-50 disabled:cursor-not-allowed
+            "
+          >
+            Forgot password?
+          </button>
+        )}
 
         <button
           type="button"
@@ -155,9 +183,11 @@ export function LoginForm() {
             disabled:opacity-50 disabled:cursor-not-allowed
           "
         >
-          {mode === 'signin'
-            ? "Don't have an account? Create one"
-            : 'Already have an account? Sign in'}
+          {mode === 'forgot'
+            ? 'Back to sign in'
+            : mode === 'signin'
+              ? "Don't have an account? Create one"
+              : 'Already have an account? Sign in'}
         </button>
       </div>
     </form>
