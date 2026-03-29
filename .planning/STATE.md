@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Native App
 status: planning
-stopped_at: Completed 07-diary-calendar-02-PLAN.md
-last_updated: "2026-03-29T20:55:42.334Z"
+stopped_at: Completed 07-diary-calendar/07-01-PLAN.md
+last_updated: "2026-03-29T20:58:57.652Z"
 progress:
   total_phases: 1
   completed_phases: 0
   total_plans: 5
-  completed_plans: 1
+  completed_plans: 2
   percent: 100
 ---
 
@@ -36,6 +36,8 @@ Progress: [██████████] 100%
 Full decision log in PROJECT.md Key Decisions table.
 - [Phase 07-diary-calendar]: Created services.ts actions file in Plan 02 rather than waiting for Plan 01 to avoid blocking the services screens
 - [Phase 07-diary-calendar]: Category input is a plain text field that resolves or creates a ServiceCategory via getOrCreateCategory
+- [Phase 07-diary-calendar]: Jest testEnvironment:node for pure function tests — avoids React Native renderer complexity
+- [Phase 07-diary-calendar]: isWithinWorkingHours exported as standalone function for UI pre-validation in booking flow
 
 ### Pending Todos
 
@@ -49,6 +51,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-29T20:55:42.332Z
-Stopped at: Completed 07-diary-calendar-02-PLAN.md
+Last session: 2026-03-29T20:58:57.650Z
+Stopped at: Completed 07-diary-calendar/07-01-PLAN.md
 Resume file: None
