@@ -1,11 +1,12 @@
 import { useEffect, useState, useCallback } from 'react'
 import { View, Text, StyleSheet, ScrollView, Pressable, Alert } from 'react-native'
-import { useFocusEffect } from 'expo-router'
-import { ChevronRight, LogOut, User, Clock, Ruler } from 'lucide-react-native'
+import { useFocusEffect, useRouter } from 'expo-router'
+import { ChevronRight, LogOut, User, Clock, Ruler, Scissors } from 'lucide-react-native'
 import { useTheme } from '@/providers/ThemeProvider'
 import { useAuth } from '@/providers/AuthProvider'
 import { Button } from '@/components/ui'
 import { getProfile } from '@/lib/actions/profile'
+import { getServiceCountActive } from '@/lib/actions/services'
 import { typography, spacing, radius } from '@/theme'
 import type { Profile } from '@/lib/types/database'
 
@@ -49,11 +50,14 @@ const SLOT_LABELS: Record<number, string> = {
 export default function SettingsScreen() {
   const { theme } = useTheme()
   const { signOut, user } = useAuth()
+  const router = useRouter()
   const [profile, setProfile] = useState<Profile | null>(null)
+  const [serviceCount, setServiceCount] = useState<number | null>(null)
 
   useFocusEffect(
     useCallback(() => {
       getProfile().then(setProfile)
+      getServiceCountActive().then(setServiceCount)
     }, [])
   )
 
@@ -90,6 +94,12 @@ export default function SettingsScreen() {
           icon={<Ruler size={20} color={iconColor} />}
           label="Default slot"
           value={profile ? SLOT_LABELS[profile.default_slot_minutes] || `${profile.default_slot_minutes} min` : undefined}
+        />
+        <SettingsRow
+          icon={<Scissors size={20} color={iconColor} />}
+          label="Services"
+          value={serviceCount !== null && serviceCount > 0 ? `${serviceCount} active` : undefined}
+          onPress={() => router.push('/services')}
         />
       </View>
 
