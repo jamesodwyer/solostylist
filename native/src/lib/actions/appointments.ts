@@ -250,6 +250,28 @@ export async function updateAppointmentStatus(
 }
 
 /**
+ * Update the notes field on an existing appointment.
+ */
+export async function updateAppointmentNotes(
+  appointmentId: string,
+  notes: string
+): Promise<{ success?: boolean; error?: string }> {
+  if (!appointmentId) return { error: 'appointmentId is required' }
+
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) return { error: 'Not authenticated' }
+
+  const { error } = await supabase
+    .from('appointments')
+    .update({ notes: notes.trim() || null, updated_at: new Date().toISOString() })
+    .eq('id', appointmentId)
+    .eq('owner_user_id', user.id)
+
+  if (error) return { error: error.message }
+  return { success: true }
+}
+
+/**
  * Reschedule an appointment to a new time range.
  * Validates working hours and handles double-booking errors.
  */
