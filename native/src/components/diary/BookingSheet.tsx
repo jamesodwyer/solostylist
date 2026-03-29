@@ -373,7 +373,11 @@ export const BookingSheet = forwardRef<BottomSheetModal, BookingSheetProps>(
 
     const totalPrice = selectedServices.reduce((sum, s) => sum + s.price, 0)
 
-    const serviceSectionsFlat: Array<{ type: 'header'; title: string } | { type: 'service'; service: Service }> =
+    type ServiceSectionItem =
+      | { type: 'header'; title: string }
+      | { type: 'service'; service: Service }
+
+    const serviceSectionsFlat: ServiceSectionItem[] =
       categorySections.flatMap(section => [
         { type: 'header' as const, title: section.category },
         ...section.services.map(s => ({ type: 'service' as const, service: s })),
@@ -395,12 +399,12 @@ export const BookingSheet = forwardRef<BottomSheetModal, BookingSheetProps>(
             style={{ marginTop: spacing.md }}
           />
         ) : (
-          <BottomSheetFlatList
+          <BottomSheetFlatList<ServiceSectionItem>
             data={serviceSectionsFlat}
-            keyExtractor={(item: typeof serviceSectionsFlat[number], index: number) =>
-              item.type === 'header' ? `header-${item.title}` : `service-${item.service.id}`
+            keyExtractor={(item: ServiceSectionItem) =>
+              item.type === 'header' ? `header-${item.title}` : `service-${(item as { type: 'service'; service: Service }).service.id}`
             }
-            renderItem={({ item }: { item: typeof serviceSectionsFlat[number] }) => {
+            renderItem={({ item }: { item: ServiceSectionItem }) => {
               if (item.type === 'header') {
                 return (
                   <Text
