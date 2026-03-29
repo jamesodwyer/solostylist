@@ -30,7 +30,7 @@
 
 **Requirements:** [DIARY-01, DIARY-02, DIARY-03, DIARY-04, DIARY-05, DIARY-06, DIARY-07, DIARY-08, DIARY-09, DIARY-10, DIARY-11, DIARY-12, DIARY-13, DIARY-14, DIARY-15]
 
-**Plans:** 4/5 plans executed
+**Plans:** 5/5 plans complete
 
 Plans:
 - [ ] 07-01-PLAN.md — Foundation: dependencies, test setup, time grid utils, actions, AppointmentBlock
@@ -49,4 +49,4 @@ Plans:
 | 4. Payments | v1.0 | 3/3 | Complete | 2026-03-10 |
 | 5. Polish | v1.0 | 3/3 | Complete | 2026-03-10 |
 | 6. Booking Client Notes | v1.0 | 2/2 | Complete | 2026-03-10 |
-| 7. Diary Calendar | 4/5 | In Progress|  | — |
+| 7. Diary Calendar | 5/5 | Complete   | 2026-03-29 | — |
