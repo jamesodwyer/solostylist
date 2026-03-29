@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v2.0
 milestone_name: Native App
 status: planning
-stopped_at: Completed 07-diary-calendar/07-04-PLAN.md
-last_updated: "2026-03-29T21:05:43.353Z"
+stopped_at: Completed 07-diary-calendar/07-03-PLAN.md
+last_updated: "2026-03-29T21:06:59.142Z"
 progress:
   total_phases: 1
   completed_phases: 0
   total_plans: 5
-  completed_plans: 3
+  completed_plans: 4
   percent: 100
 ---
 
@@ -40,6 +40,8 @@ Full decision log in PROJECT.md Key Decisions table.
 - [Phase 07-diary-calendar]: isWithinWorkingHours exported as standalone function for UI pre-validation in booking flow
 - [Phase 07-diary-calendar]: GestureHandlerRootView added in (tabs)/_layout.tsx — root app/_layout.tsx had no gesture wrapper
 - [Phase 07-diary-calendar]: Flat union-type array used for grouped service list instead of BottomSheetSectionList
+- [Phase 07-diary-calendar]: WeekView uses inline WeekAppointmentBlock to avoid TIME_GUTTER_DP offset from AppointmentBlock
+- [Phase 07-diary-calendar]: DiaryScreen defaults to day view as the stylist primary daily interface
 
 ### Pending Todos
 
@@ -53,6 +55,6 @@ None.
 
 ## Session Continuity
 
-Last session: 2026-03-29T21:05:43.351Z
-Stopped at: Completed 07-diary-calendar/07-04-PLAN.md
+Last session: 2026-03-29T21:06:59.140Z
+Stopped at: Completed 07-diary-calendar/07-03-PLAN.md
 Resume file: None
