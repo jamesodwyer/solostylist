@@ -5,6 +5,23 @@ export interface ServiceWithCategory extends Service {
   service_categories?: ServiceCategory
 }
 
+// Plan 07-01 types — used by diary booking flow
+export interface CreateServiceInput {
+  name: string
+  price: number              // integer pennies
+  duration_minutes: number
+  category_id?: string | null
+  is_active?: boolean
+}
+
+export interface ServiceUpdateFields {
+  name?: string
+  price?: number             // integer pennies
+  duration_minutes?: number
+  category_id?: string | null
+  is_active?: boolean
+}
+
 export async function getServices(): Promise<ServiceWithCategory[]> {
   const { data, error } = await supabase
     .from('services')
@@ -13,6 +30,25 @@ export async function getServices(): Promise<ServiceWithCategory[]> {
 
   if (error) throw new Error(error.message)
   return (data ?? []) as ServiceWithCategory[]
+}
+
+/**
+ * Fetch active services grouped by category name.
+ * Services without a category are placed under "General".
+ */
+export async function getServicesByCategory(): Promise<Map<string, Service[]>> {
+  const services = await getServices()
+  const map = new Map<string, Service[]>()
+
+  for (const service of services) {
+    const categoryName = service.service_categories?.name ?? 'General'
+    if (!map.has(categoryName)) {
+      map.set(categoryName, [])
+    }
+    map.get(categoryName)!.push(service)
+  }
+
+  return map
 }
 
 export async function getService(id: string): Promise<ServiceWithCategory | null> {
