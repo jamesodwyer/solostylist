@@ -3,6 +3,7 @@
 ## Milestones
 
 - ✅ **v1.0 MVP** — Phases 1-6 (shipped 2026-03-10)
+- **v2.0 Native App** — Phases 7+ (React Native + Expo conversion)
 
 ## Phases
 
@@ -20,6 +21,10 @@
 **Archive:** `.planning/milestones/v1.0-ROADMAP.md`
 
 </details>
+
+### v2.0 Native App
+
+- [ ] Phase 7: Diary Calendar — Month/Week/Day views, booking flow, appointment management, services CRUD
 
 ## Progress
 
