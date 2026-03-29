@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import { View, StyleSheet, ActivityIndicator } from 'react-native'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
+import { View, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native'
 import { useFocusEffect } from 'expo-router'
+import { Plus } from 'lucide-react-native'
+import { BottomSheetModal } from '@gorhom/bottom-sheet'
 import { useTheme } from '@/providers/ThemeProvider'
 import { spacing } from '@/theme'
 import { SegmentedControl, type CalendarView } from '@/components/diary/SegmentedControl'
@@ -8,6 +10,8 @@ import { DateHeader } from '@/components/diary/DateHeader'
 import { MonthView } from '@/components/diary/MonthView'
 import { WeekView } from '@/components/diary/WeekView'
 import { DayView } from '@/components/diary/DayView'
+import { BookingSheet } from '@/components/diary/BookingSheet'
+import { AppointmentSheet } from '@/components/diary/AppointmentSheet'
 import { getAppointmentsForRange, getAppointmentsForMonth } from '@/lib/actions/appointments'
 import { getProfile } from '@/lib/actions/profile'
 import { parseHHMM } from '@/lib/utils/timeGrid'
@@ -49,11 +53,20 @@ function weekStart(date: Date): Date {
 export default function DiaryScreen() {
   const { theme } = useTheme()
 
+  // ---- Calendar state -------------------------------------------------------
+
   const [view, setView] = useState<CalendarView>('day')
   const [selectedDate, setSelectedDate] = useState<Date>(new Date())
   const [appointments, setAppointments] = useState<Appointment[]>([])
   const [profile, setProfile] = useState<Profile | null>(null)
   const [loading, setLoading] = useState(false)
+
+  // ---- Sheet state ----------------------------------------------------------
+
+  const bookingSheetRef = useRef<BottomSheetModal>(null)
+  const appointmentSheetRef = useRef<BottomSheetModal>(null)
+  const [selectedAppointment, setSelectedAppointment] = useState<Appointment | null>(null)
+  const [bookingStartTime, setBookingStartTime] = useState<string | null>(null)
 
   // Load profile once
   useEffect(() => {
@@ -111,6 +124,12 @@ export default function DiaryScreen() {
     loadAppointments()
   }, [loadAppointments])
 
+  // Refresh callback for sheets (clears selection, reloads data)
+  const refreshAppointments = useCallback(() => {
+    setSelectedAppointment(null)
+    loadAppointments()
+  }, [loadAppointments])
+
   // ---- Navigation handlers --------------------------------------------------
 
   const handlePrev = useCallback(() => {
@@ -145,16 +164,26 @@ export default function DiaryScreen() {
     setSelectedDate(new Date(year, month - 1, 1))
   }, [])
 
-  // ---- Press handlers (wired by Plans 04 and 05) ----------------------------
+  // ---- Sheet handlers -------------------------------------------------------
 
-  const handleAppointmentPress = useCallback((_appointment: Appointment) => {
-    // Plan 05 (AppointmentSheet) will wire this
-    console.log('appointment pressed:', _appointment.id)
+  const handleAppointmentPress = useCallback((appointment: Appointment) => {
+    setSelectedAppointment(appointment)
+    appointmentSheetRef.current?.present()
   }, [])
 
-  const handleSlotPress = useCallback((_time: string, _date?: string) => {
-    // Plan 04 (BookingSheet) will wire this
-    console.log('slot pressed:', _time, _date)
+  const handleSlotPress = useCallback((time: string, date?: string) => {
+    setBookingStartTime(time)
+    // If a specific date was passed (from WeekView), navigate to it
+    if (date) {
+      const [year, month, day] = date.split('-').map(Number)
+      setSelectedDate(new Date(year, month - 1, day))
+    }
+    bookingSheetRef.current?.present()
+  }, [])
+
+  const handleFABPress = useCallback(() => {
+    setBookingStartTime(null)
+    bookingSheetRef.current?.present()
   }, [])
 
   // ---- Render ---------------------------------------------------------------
@@ -222,6 +251,34 @@ export default function DiaryScreen() {
           />
         )}
       </View>
+
+      {/* FAB — opens booking sheet */}
+      <TouchableOpacity
+        style={[styles.fab, { backgroundColor: theme.primary }]}
+        onPress={handleFABPress}
+        accessibilityRole="button"
+        accessibilityLabel="New appointment"
+      >
+        <Plus size={24} color="#FFFFFF" strokeWidth={2.5} />
+      </TouchableOpacity>
+
+      {/* Booking sheet (create new appointment) */}
+      <BookingSheet
+        ref={bookingSheetRef}
+        initialDate={selectedDate}
+        initialTime={bookingStartTime ?? undefined}
+        workingHours={profile?.working_hours ?? { mon: { enabled: true, start: '09:00', end: '17:00' }, tue: { enabled: true, start: '09:00', end: '17:00' }, wed: { enabled: true, start: '09:00', end: '17:00' }, thu: { enabled: true, start: '09:00', end: '17:00' }, fri: { enabled: true, start: '09:00', end: '17:00' }, sat: { enabled: false, start: '09:00', end: '17:00' }, sun: { enabled: false, start: '09:00', end: '17:00' } }}
+        slotMinutes={slotMinutes}
+        onBooked={refreshAppointments}
+      />
+
+      {/* Appointment sheet (view/manage existing appointment) */}
+      <AppointmentSheet
+        ref={appointmentSheetRef}
+        appointment={selectedAppointment}
+        workingHours={profile?.working_hours}
+        onUpdated={refreshAppointments}
+      />
     </View>
   )
 }
@@ -238,5 +295,22 @@ const styles = StyleSheet.create({
   },
   viewContainer: {
     flex: 1,
+  },
+  fab: {
+    position: 'absolute',
+    bottom: spacing.xl,
+    right: spacing.md,
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // Shadow for elevation
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 6,
+    zIndex: 10,
   },
 })
