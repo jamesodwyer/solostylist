@@ -146,6 +146,10 @@ None - no external service configuration required.
 - DiaryScreen has no-op handlers for slot/appointment press — Plans 04 and 05 replace those with bottom sheet opens
 - No blockers
 
+## Self-Check: PASSED
+
+All files verified to exist on disk. All task commits verified in git history.
+
 ---
 *Phase: 07-diary-calendar*
 *Completed: 2026-03-29*
