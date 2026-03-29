@@ -24,7 +24,20 @@
 
 ### v2.0 Native App
 
-- [ ] Phase 7: Diary Calendar — Month/Week/Day views, booking flow, appointment management, services CRUD
+### Phase 7: Diary Calendar
+
+**Goal:** Complete diary/calendar system with Month/Week/Day views, 3-step booking flow, appointment management, services CRUD, and payment integration
+
+**Requirements:** [DIARY-01, DIARY-02, DIARY-03, DIARY-04, DIARY-05, DIARY-06, DIARY-07, DIARY-08, DIARY-09, DIARY-10, DIARY-11, DIARY-12, DIARY-13, DIARY-14, DIARY-15]
+
+**Plans:** 5 plans
+
+Plans:
+- [ ] 07-01-PLAN.md — Foundation: dependencies, test setup, time grid utils, actions, AppointmentBlock
+- [ ] 07-02-PLAN.md — Services CRUD: list, create, edit, delete screens
+- [ ] 07-03-PLAN.md — Calendar views: Month/Week/Day with navigation and time indicators
+- [ ] 07-04-PLAN.md — Booking flow: 3-step bottom sheet with client notes preview
+- [ ] 07-05-PLAN.md — Appointment management: detail sheet, status actions, reschedule, payment
 
 ## Progress
 
@@ -36,3 +49,4 @@
 | 4. Payments | v1.0 | 3/3 | Complete | 2026-03-10 |
 | 5. Polish | v1.0 | 3/3 | Complete | 2026-03-10 |
 | 6. Booking Client Notes | v1.0 | 2/2 | Complete | 2026-03-10 |
+| 7. Diary Calendar | v2.0 | 0/5 | Planned | — |
