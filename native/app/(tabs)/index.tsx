@@ -1,36 +1,28 @@
 import { View, Text, StyleSheet } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { useTheme } from '@/providers/ThemeProvider'
+import { typography, spacing } from '@/theme'
 
 export default function DiaryScreen() {
+  const { theme } = useTheme()
+
   return (
-    <SafeAreaView style={styles.container} edges={['bottom']}>
+    <View style={[styles.container, { backgroundColor: theme.background }]}>
       <View style={styles.content}>
-        <Text style={styles.title}>Diary</Text>
-        <Text style={styles.subtitle}>Your appointments will appear here</Text>
+        <Text style={[typography.h2, { color: theme.text }]}>Diary</Text>
+        <Text style={[typography.body, { color: theme.textSecondary, marginTop: spacing.sm }]}>
+          Your appointments will appear here
+        </Text>
       </View>
-    </SafeAreaView>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-  },
+  container: { flex: 1 },
   content: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: '#000000',
-    marginBottom: 8,
-  },
-  subtitle: {
-    fontSize: 16,
-    color: '#6b7280',
+    padding: spacing.lg,
   },
 })

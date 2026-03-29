@@ -1,27 +1,32 @@
 import { Tabs } from 'expo-router'
 import { Calendar, Users, Banknote, Settings } from 'lucide-react-native'
+import { useTheme } from '@/providers/ThemeProvider'
+import { typography } from '@/theme'
 
 export default function TabLayout() {
+  const { theme } = useTheme()
+
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: '#000000',
-        tabBarInactiveTintColor: '#9ca3af',
+        tabBarActiveTintColor: theme.tabActive,
+        tabBarInactiveTintColor: theme.tabInactive,
         tabBarLabelStyle: {
-          fontSize: 12,
-          fontWeight: '500',
+          ...typography.tabLabel,
         },
         tabBarStyle: {
           borderTopWidth: 1,
-          borderTopColor: '#e5e7eb',
-          backgroundColor: '#ffffff',
+          borderTopColor: theme.tabBorder,
+          backgroundColor: theme.tabBackground,
         },
         headerStyle: {
-          backgroundColor: '#ffffff',
+          backgroundColor: theme.background,
         },
         headerTitleStyle: {
           fontWeight: '600',
+          color: theme.text,
         },
+        headerShadowVisible: false,
       }}
     >
       <Tabs.Screen
